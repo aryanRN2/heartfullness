@@ -16,8 +16,7 @@ import {
   Clock,
   MapPin
 } from 'lucide-react';
-import BreathingGuide from '@/components/BreathingGuide';
-import MeditationTimer from '@/components/MeditationTimer';
+
 
 // Calming Quotes for the slider
 const QUOTES = [
@@ -100,10 +99,10 @@ export default function Home() {
         {/* Actions bar */}
         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center max-w-md">
           <button
-            onClick={() => scrollToSection('sanctuary')}
+            onClick={() => scrollToSection('schedule')}
             className="btn-primary py-4 px-8 text-sm uppercase tracking-wider font-bold"
           >
-            Enter Sanctuary
+            Book Free Session
           </button>
           <button
             onClick={() => scrollToSection('about')}
@@ -302,24 +301,7 @@ export default function Home() {
 
       </section>
 
-      {/* 4. MEDITATION SANCTUARY (THE UTILITIES HUB) */}
-      <section id="sanctuary" className="py-24 md:py-32 w-full max-w-7xl px-6 flex flex-col gap-16">
-        <div className="text-center max-w-3xl mx-auto">
-          <span className="text-xs text-blue-655 font-bold uppercase tracking-wider mb-2 block">Practice Sanctuary</span>
-          <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-4">
-            Harmonize Mind & Body Instantly
-          </h3>
-          <p className="text-stone-600">
-            Use our built-in breathing paces to achieve vagal stimulation, or configure the guided timer with synthesized ambient atmospheres to sit for deeper transmission.
-          </p>
-        </div>
 
-        {/* Breathing Guide component */}
-        <BreathingGuide />
-
-        {/* Meditation Timer component */}
-        <MeditationTimer />
-      </section>
 
       {/* 5. SESSION SCHEDULE & BOOKING PORTAL */}
       <section id="schedule" className="py-24 md:py-32 w-full max-w-7xl px-6 bg-stone-50/40 rounded-3xl relative overflow-hidden border border-stone-100">
@@ -478,7 +460,6 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-stone-500 text-xs mb-8 font-medium">
             <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('about')}>Instructor bio</span>
             <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('philosophy')}>Pillars</span>
-            <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('sanctuary')}>Pacer Sanctuary</span>
             <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('schedule')}>Daily schedule</span>
           </div>
 

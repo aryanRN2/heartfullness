@@ -70,7 +70,6 @@ export default function Header() {
           {[
             { id: 'about', label: 'Meet Gopal' },
             { id: 'philosophy', label: 'Philosophy' },
-            { id: 'sanctuary', label: 'Sanctuary' },
             { id: 'schedule', label: 'Guided Sessions' },
           ].map((item) => (
             <button
@@ -110,7 +109,6 @@ export default function Header() {
             {[
               { id: 'about', label: 'Meet Gopal' },
               { id: 'philosophy', label: 'The Philosophy' },
-              { id: 'sanctuary', label: 'Practice Sanctuary' },
               { id: 'schedule', label: 'Schedule Sessions' },
             ].map((item) => (
               <button
