@@ -94,7 +94,7 @@ export default function Home() {
         </h2>
 
         <p className="text-stone-700 text-base md:text-xl max-w-2xl font-inter leading-relaxed mb-10">
-          Unlock the natural flow of spiritual energy. Experience heart based meditation to cultivate deep inner peace.
+          Unlock the natural flow of spiritual energy. Experience heart based meditation to cultivate deep inner peace for global peace.
         </p>
 
         {/* Actions bar */}
