@@ -84,11 +84,7 @@ export default function Home() {
       
       {/* 1. HERO SECTION */}
       <section className="min-h-screen w-full flex flex-col items-center justify-center relative px-6 text-center pt-24 pb-16">
-        {/* Subtle top floating badge */}
-        <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-blue-50/95 border border-blue-200/50 text-blue-800 text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-          Yogic Transmission Enabled
-        </div>
+
 
         {/* Large spiritual meditation headlines */}
         <h2 className="text-4xl md:text-7xl font-extrabold font-outfit max-w-5xl leading-tight md:leading-tight text-stone-900 mb-6">
