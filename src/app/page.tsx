@@ -5,13 +5,11 @@ import {
   Heart, 
   Sparkles, 
   BookOpen, 
-  Calendar, 
   ChevronRight, 
   ChevronLeft,
   X,
   Quote, 
   User, 
-  ShieldCheck, 
   ArrowRight,
   Send,
   CheckCircle2,
@@ -157,22 +155,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Float badges around frame */}
-            <div className="absolute top-1/4 -right-4 md:-right-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
-              <ShieldCheck className="w-5 h-5 text-emerald-600" />
-              <div className="text-left">
-                <p className="text-[10px] text-stone-500 font-bold uppercase leading-none">Trainer Since</p>
-                <p className="text-sm font-bold text-stone-900 leading-none mt-0.5">2004</p>
-              </div>
-            </div>
-
-            <div className="absolute bottom-1/4 -left-4 md:-left-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
-              <Calendar className="w-5 h-5 text-blue-500" />
-              <div className="text-left">
-                <p className="text-[10px] text-stone-500 font-bold uppercase leading-none">Guided Sessions</p>
-                <p className="text-sm font-bold text-stone-900 leading-none mt-0.5">15,000+</p>
-              </div>
-            </div>
           </div>
 
           {/* Biographical content */}
