@@ -94,7 +94,7 @@ export default function Home() {
         </h2>
 
         <p className="text-stone-700 text-base md:text-xl max-w-2xl font-inter leading-relaxed mb-10">
-          Unlock the natural flow of spiritual energy. Experience heart-focused meditation guided by <strong className="font-bold text-blue-600">Gopal</strong>, a certified Heartfulness Meditation Trainer dedicated to helping you cultivate deep inner coherence.
+          Unlock the natural flow of spiritual energy. Experience heart based meditation to cultivate deep inner coherence.
         </p>
 
         {/* Actions bar */}
@@ -109,7 +109,7 @@ export default function Home() {
             onClick={() => scrollToSection('about')}
             className="btn-secondary py-4 px-8 text-sm uppercase tracking-wider font-bold"
           >
-            Meet Instructor
+            Meet Trainer
           </button>
         </div>
 
