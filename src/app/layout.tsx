@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import HeartParticles from "@/components/HeartParticles";
-import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Gopal Ram | Heartfulness Meditation & Inner Coherence",
@@ -31,9 +30,6 @@ export default function RootLayout({
           <div className="bg-orb orb-primary" />
           <div className="bg-orb orb-secondary" />
           <div className="bg-orb orb-tertiary" />
-
-          {/* Navigation Header */}
-          <Header />
 
           {/* Main Content Sections */}
           <main className="relative z-10 w-full min-h-screen">
