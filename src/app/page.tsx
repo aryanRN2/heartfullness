@@ -37,24 +37,6 @@ const QUOTES = [
   }
 ];
 
-const GALLERY_IMAGES = [
-  {
-    src: '/gallery1.png',
-    title: 'Peaceful Solitude',
-    desc: 'Connecting with inner silence amidst the gentle whispers of nature.'
-  },
-  {
-    src: '/gallery2.png',
-    title: 'Collective Harmony',
-    desc: 'Basking in the unified field of collective transmission and shared stillness.'
-  },
-  {
-    src: '/gallery3.png',
-    title: 'Spiritual Light',
-    desc: 'The silent absorption of Pranahuti, illuminating the heart from within.'
-  }
-];
-
 export default function Home() {
   // Quotes Carousel State
   const [activeQuote, setActiveQuote] = useState(0);
@@ -62,11 +44,32 @@ export default function Home() {
   // Gallery Lightbox State
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
+  // Dynamic Gallery Images State
+  const [galleryImages, setGalleryImages] = useState<any[]>([]);
+  const [isLoadingGallery, setIsLoadingGallery] = useState(true);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveQuote((prev) => (prev + 1) % QUOTES.length);
     }, 7000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    async function fetchGallery() {
+      try {
+        const res = await fetch('/api/gallery');
+        if (res.ok) {
+          const data = await res.json();
+          setGalleryImages(data);
+        }
+      } catch (err) {
+        console.error('Error fetching gallery:', err);
+      } finally {
+        setIsLoadingGallery(false);
+      }
+    }
+    fetchGallery();
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -164,12 +167,8 @@ export default function Home() {
               Guiding Seeker’s Hearts Back to the Source
             </h3>
             
-            <p className="text-stone-700 leading-relaxed mb-6 font-inter">
-              Gopal has spent over two decades facilitating spiritual transition and cleaning sessions. Under the Heartfulness lineage, he conducts masterclasses globally, translating highly complex metaphysical yogic practices into modern, highly accessible habits.
-            </p>
-
             <p className="text-stone-700 leading-relaxed mb-8 font-inter">
-              Whether you are a busy corporate professional seeking nervous system relief, or a spiritual seeker yearning for the highest stages of human absorption, Gopal’s unique teaching style connects directly, using pranahuti (transmission) to clear obstacles and establish inner alignment.
+              I have served in Judicial Department as Personal Assistant to Additional District Judge Sonbhadra. During service period, I continued spiritual service among the people of my locality. I am leading a purposeful, joyful, and balanced life with my family for last 18 years.
             </p>
 
             {/* Grid checklist */}
@@ -341,30 +340,40 @@ export default function Home() {
           </div>
 
           {/* Grid layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
-            {GALLERY_IMAGES.map((img, idx) => (
-              <div 
-                key={idx}
-                onClick={() => setLightboxIndex(idx)}
-                className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl border border-black/5 bg-white aspect-square transition-all duration-500 transform hover:-translate-y-1"
-              >
-                {/* Image */}
-                <img
-                  src={img.src}
-                  alt={img.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+          {isLoadingGallery ? (
+            <div className="flex items-center justify-center py-16 text-stone-500 font-inter">
+              <span className="animate-pulse">Loading gallery sanctuary...</span>
+            </div>
+          ) : galleryImages.length === 0 ? (
+            <div className="flex items-center justify-center py-16 text-stone-500 font-inter">
+              <span>Gallery is currently empty. Add photos to the gallary folder.</span>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+              {galleryImages.map((img, idx) => (
+                <div 
+                  key={idx}
+                  onClick={() => setLightboxIndex(idx)}
+                  className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl border border-black/5 bg-white aspect-square transition-all duration-500 transform hover:-translate-y-1"
+                >
+                  {/* Image */}
+                  <img
+                    src={img.src}
+                    alt={img.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
 
-                {/* Subtle overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                  <h4 className="text-white text-lg font-bold font-outfit leading-none">{img.title}</h4>
-                  <p className="text-stone-300 text-xs mt-1.5 font-inter leading-relaxed line-clamp-2">
-                    {img.desc}
-                  </p>
+                  {/* Subtle overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                    <h4 className="text-white text-lg font-bold font-outfit leading-none">{img.title}</h4>
+                    <p className="text-stone-300 text-xs mt-1.5 font-inter leading-relaxed line-clamp-2">
+                      {img.desc}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -399,7 +408,7 @@ export default function Home() {
       </footer>
 
       {/* GALLERY LIGHTBOX MODAL */}
-      {lightboxIndex !== null && (
+      {lightboxIndex !== null && galleryImages.length > 0 && (
         <div className="fixed inset-0 z-50 bg-stone-950/90 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300">
           {/* Close button */}
           <button
@@ -412,7 +421,7 @@ export default function Home() {
 
           {/* Left arrow */}
           <button
-            onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length : null))}
+            onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev - 1 + galleryImages.length) % galleryImages.length : null))}
             className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white cursor-pointer z-50 transition-colors hidden sm:flex"
             title="Previous Image"
           >
@@ -422,28 +431,28 @@ export default function Home() {
           {/* Image Container with text below */}
           <div className="max-w-4xl max-h-[85vh] flex flex-col items-center gap-6 relative select-none">
             <img
-              src={GALLERY_IMAGES[lightboxIndex].src}
-              alt={GALLERY_IMAGES[lightboxIndex].title}
+              src={galleryImages[lightboxIndex]?.src}
+              alt={galleryImages[lightboxIndex]?.title}
               className="max-h-[70vh] rounded-2xl object-contain shadow-2xl border border-white/10"
             />
             
             <div className="text-center text-white max-w-xl px-4">
-              <h4 className="text-xl md:text-2xl font-bold font-outfit">{GALLERY_IMAGES[lightboxIndex].title}</h4>
+              <h4 className="text-xl md:text-2xl font-bold font-outfit">{galleryImages[lightboxIndex]?.title}</h4>
               <p className="text-stone-400 text-sm md:text-base mt-2 font-inter leading-relaxed">
-                {GALLERY_IMAGES[lightboxIndex].desc}
+                {galleryImages[lightboxIndex]?.desc}
               </p>
             </div>
             
             {/* Mobile swipe indicators */}
             <div className="flex gap-4 sm:hidden mt-2">
               <button
-                onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length : null))}
+                onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev - 1 + galleryImages.length) % galleryImages.length : null))}
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white cursor-pointer"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
-                onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev + 1) % GALLERY_IMAGES.length : null))}
+                onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev + 1) % galleryImages.length : null))}
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white cursor-pointer"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -453,7 +462,7 @@ export default function Home() {
 
           {/* Right arrow */}
           <button
-            onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev + 1) % GALLERY_IMAGES.length : null))}
+            onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev + 1) % galleryImages.length : null))}
             className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white cursor-pointer z-50 transition-colors hidden sm:flex"
             title="Next Image"
           >
