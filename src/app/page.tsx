@@ -135,12 +135,12 @@ export default function Home() {
           
           {/* Glowing Vector Frame for Profile (No text overlaid on the image) */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-            <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-sky-400 p-[3px] shadow-xl relative overflow-hidden group mb-6">
+            <div className="w-80 aspect-[4/3] md:w-[480px] rounded-3xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-sky-400 p-[3px] shadow-xl relative overflow-hidden group mb-6">
               <div className="w-full h-full rounded-[21px] bg-stone-100 relative overflow-hidden">
-                {/* Real Trainer Image */}
+                {/* Real Trainer ID Card */}
                 <img
-                  src="/trainer.jpg"
-                  alt="Gopal - Heartfulness Meditation Trainer"
+                  src="/id_card.jpeg"
+                  alt="Gopal - Heartfulness Meditation Trainer ID Card"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
@@ -158,7 +158,7 @@ export default function Home() {
             </div>
 
             {/* Float badges around frame */}
-            <div className="absolute top-[80px] -right-4 md:-right-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
+            <div className="absolute top-4 -right-4 md:-right-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md z-20">
               <ShieldCheck className="w-5 h-5 text-emerald-600" />
               <div className="text-left">
                 <p className="text-[10px] text-stone-500 font-bold uppercase leading-none">Trainer Since</p>
@@ -166,7 +166,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="absolute top-[280px] -left-4 md:-left-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
+            <div className="absolute bottom-16 -left-4 md:-left-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md z-20">
               <Calendar className="w-5 h-5 text-blue-500" />
               <div className="text-left">
                 <p className="text-[10px] text-stone-500 font-bold uppercase leading-none">Guided Sessions</p>
