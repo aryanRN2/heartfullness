@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --font-outfit: 'Outfit', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  
+  /* Color Palette - Spiritual Sunrise & Deep Space */
+  --bg-deep: #080312;
+  --bg-darker: #0d061d;
+  --bg-dark: #12092a;
+  --text-primary: #f5f3f7;
+  --text-secondary: #c2b5d4;
+  --text-muted: #8d7aab;
+  
+  --color-primary: #ff3377;
+  --color-accent: #8b5cf6;
+  --color-gold: #ffbe3b;
+  
+  --gradient-sunrise: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
+  --gradient-spiritual: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  --gradient-aurora: linear-gradient(135deg, #ff3377 0%, #8b5cf6 50%, #00f2fe 100%);
+  --gradient-gold: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  
+  --glass-bg: rgba(18, 10, 35, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-glow: 0 8px 32px 0 rgba(106, 17, 203, 0.25);
+  
+  --scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Premium Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.6);
+}
+
+/* Vibrant Animated Background Orbs */
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -2;
+  opacity: 0.4;
+  pointer-events: none;
+  animation: float 25s ease-in-out infinite alternate;
+}
+
+.orb-primary {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 51, 119, 0.3) 0%, rgba(139, 92, 246, 0) 70%);
+  top: -100px;
+  right: -100px;
+}
+
+.orb-secondary {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(106, 17, 203, 0.25) 0%, rgba(37, 117, 252, 0) 70%);
+  bottom: 10%;
+  left: -200px;
+  animation-duration: 35s;
+}
+
+.orb-tertiary {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.2) 0%, rgba(139, 92, 246, 0) 70%);
+  top: 40%;
+  right: -150px;
+  animation-duration: 40s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(80px, 50px) scale(1.1);
+  }
+}
+
+/* Elegant Glassmorphic Components */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-glow);
+  border-radius: 24px;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(139, 92, 246, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(139, 92, 246, 0.15);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(255, 51, 119, 0.2);
+}
+
+/* Calming Breathing Visualizer animations */
+@keyframes breathing-inhale {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+  }
+  100% {
+    transform: scale(1.4);
+    box-shadow: 0 0 50px rgba(139, 92, 246, 0.5);
+  }
+}
+
+@keyframes breathing-text {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+/* Text glow effects */
+.glow-text-primary {
+  text-shadow: 0 0 12px rgba(255, 51, 119, 0.4);
+}
+
+.glow-text-accent {
+  text-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+/* Button variants with beautiful hover states */
+.btn-primary {
+  position: relative;
+  background: var(--gradient-aurora);
+  background-size: 200% auto;
+  border: none;
+  color: white;
+  font-weight: 500;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(255, 51, 119, 0.3);
+}
+
+.btn-primary:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 51, 119, 0.5);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  font-weight: 500;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Lenis Custom Smooth Scrolling integration */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
