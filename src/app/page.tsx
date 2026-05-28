@@ -134,14 +134,14 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Glowing Vector Frame for Profile (No text overlaid on the image) */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
-            <div className="w-80 aspect-[4/3] md:w-[480px] rounded-3xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-sky-400 p-[3px] shadow-xl relative overflow-hidden group mb-6">
+          <div className="lg:col-span-5 flex flex-col items-center justify-center relative w-full">
+            <div className="w-full max-w-[440px] aspect-[1024/781] rounded-3xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-sky-400 p-[3px] shadow-xl relative overflow-hidden group mb-6">
               <div className="w-full h-full rounded-[21px] bg-stone-100 relative overflow-hidden">
-                {/* Real Trainer ID Card */}
+                {/* Real Trainer Image */}
                 <img
-                  src="/id_card.jpeg"
-                  alt="Gopal - Heartfulness Meditation Trainer ID Card"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  src="/trainer.jpg"
+                  alt="Gopal - Heartfulness Meditation Trainer"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 />
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function Home() {
             {/* Biography details placed cleanly below the image instead of overlaying it */}
             <div className="text-center">
               <h3 className="text-2xl md:text-3xl font-extrabold font-outfit text-stone-900 leading-none">Gopal</h3>
-              <span className="text-xs uppercase font-bold tracking-widest text-blue-650 mt-2.5 block font-inter">
+              <span className="text-xs uppercase font-bold tracking-widest text-blue-655 mt-2.5 block font-inter">
                 Heartfulness Trainer
               </span>
               <p className="text-stone-600 text-xs md:text-sm mt-3 italic leading-relaxed max-w-[320px]">
@@ -158,7 +158,7 @@ export default function Home() {
             </div>
 
             {/* Float badges around frame */}
-            <div className="absolute top-4 -right-4 md:-right-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md z-20">
+            <div className="absolute top-1/4 -right-4 md:-right-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
               <ShieldCheck className="w-5 h-5 text-emerald-600" />
               <div className="text-left">
                 <p className="text-[10px] text-stone-500 font-bold uppercase leading-none">Trainer Since</p>
@@ -166,7 +166,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="absolute bottom-16 -left-4 md:-left-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md z-20">
+            <div className="absolute bottom-1/4 -left-4 md:-left-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
               <Calendar className="w-5 h-5 text-blue-500" />
               <div className="text-left">
                 <p className="text-[10px] text-stone-500 font-bold uppercase leading-none">Guided Sessions</p>
