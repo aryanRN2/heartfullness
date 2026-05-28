@@ -173,10 +173,13 @@ export default function HeartParticles() {
 
       basePositions.push(bX, bY, bZ);
 
-      // Dispersed positions (Spread across screen on scroll)
-      const dX = (Math.random() - 0.5) * 85;
-      const dY = (Math.random() - 0.75) * 95;
-      const dZ = (Math.random() - 0.5) * 60;
+      // Make dispersed positions form a large, gorgeous background watermark logo!
+      const bgScale = 2.4;
+      const logoCenterY = 3.5 + yShift;
+      const jitter = 0.8;
+      const dX = bX * bgScale + (Math.random() - 0.5) * jitter;
+      const dY = (bY - logoCenterY) * bgScale + (Math.random() - 0.5) * jitter - 5.0; // scaled and centered lower
+      const dZ = -15.0 + (Math.random() - 0.5) * jitter * 2.0; // positioned in the background
       dispersedPositions.push(dX, dY, dZ);
 
       // Set initial positions to logo coordinates
@@ -244,6 +247,13 @@ export default function HeartParticles() {
         0.06 // Lerping speed factor
       );
 
+      // Dynamically fade and scale particles as they expand into the background watermark
+      material.opacity = THREE.MathUtils.lerp(0.88, 0.22, currentScrollRatio);
+      const isMobile = window.innerWidth < 768;
+      const baseSize = isMobile ? 0.55 : 0.38;
+      const targetSize = isMobile ? 0.85 : 0.65;
+      material.size = THREE.MathUtils.lerp(baseSize, targetSize, currentScrollRatio);
+
       const positionsAttr = geometry.attributes.position as THREE.BufferAttribute;
       
       // 2. Animate and interpolate each particle
@@ -287,15 +297,9 @@ export default function HeartParticles() {
 
       positionsAttr.needsUpdate = true;
 
-      // 3. Subtle slow rotation of the whole system
-      if (currentScrollRatio < 0.2) {
-        // Slow heart floating tilt
-        particleSystem.rotation.y = Math.sin(elapsedTime * 0.12) * 0.08;
-        particleSystem.rotation.x = Math.cos(elapsedTime * 0.08) * 0.04;
-      } else {
-        // Drift background points
-        particleSystem.rotation.y = elapsedTime * 0.015;
-      }
+      // 3. Subtle slow floating tilt of the system to keep the background logo watermark recognizable
+      particleSystem.rotation.y = Math.sin(elapsedTime * 0.12) * 0.08;
+      particleSystem.rotation.x = Math.cos(elapsedTime * 0.08) * 0.04;
 
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
