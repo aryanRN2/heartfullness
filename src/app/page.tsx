@@ -8,6 +8,7 @@ import {
   Calendar, 
   ChevronRight, 
   ChevronLeft,
+  X,
   Quote, 
   User, 
   ShieldCheck, 
@@ -38,19 +39,30 @@ const QUOTES = [
   }
 ];
 
+const GALLERY_IMAGES = [
+  {
+    src: '/gallery1.png',
+    title: 'Peaceful Solitude',
+    desc: 'Connecting with inner silence amidst the gentle whispers of nature.'
+  },
+  {
+    src: '/gallery2.png',
+    title: 'Collective Harmony',
+    desc: 'Basking in the unified field of collective transmission and shared stillness.'
+  },
+  {
+    src: '/gallery3.png',
+    title: 'Spiritual Light',
+    desc: 'The silent absorption of Pranahuti, illuminating the heart from within.'
+  }
+];
+
 export default function Home() {
   // Quotes Carousel State
   const [activeQuote, setActiveQuote] = useState(0);
   
-  // Booking Form State
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    experience: 'beginner',
-    sessionType: 'transmission-intro',
-    date: ''
-  });
-  const [isBooked, setIsBooked] = useState(false);
+  // Gallery Lightbox State
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -58,12 +70,6 @@ export default function Home() {
     }, 7000);
     return () => clearInterval(interval);
   }, []);
-
-  const handleBookingSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email) return;
-    setIsBooked(true);
-  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -94,16 +100,16 @@ export default function Home() {
         </h2>
 
         <p className="text-stone-700 text-base md:text-xl max-w-2xl font-inter leading-relaxed mb-10">
-          Unlock the natural flow of spiritual energy. Experience heart based meditation to cultivate deep inner peace for global peace.
+          Unlock the natural flow of spiritual energy. Experience heart based meditation to cultivate deep inner peace for world peace.
         </p>
 
         {/* Actions bar */}
         <div className="flex flex-col sm:flex-row gap-4 w-full justify-center max-w-md">
           <button
-            onClick={() => scrollToSection('schedule')}
+            onClick={() => scrollToSection('gallery')}
             className="btn-primary py-4 px-8 text-sm uppercase tracking-wider font-bold"
           >
-            Book Free Session
+            Explore Gallery
           </button>
           <button
             onClick={() => scrollToSection('about')}
@@ -335,143 +341,48 @@ export default function Home() {
           </div>
         </div>
 
-      </section>
-
-
-
-      {/* 5. SESSION SCHEDULE & BOOKING PORTAL */}
-      <section id="schedule" className="py-24 md:py-32 w-full max-w-7xl px-6 bg-stone-50/40 rounded-3xl relative overflow-hidden border border-stone-100">
+      </section>      {/* 5. MEDITATION GALLERY SECTION */}
+      <section id="gallery" className="py-24 md:py-32 w-full max-w-7xl px-6 bg-stone-50/40 rounded-3xl relative overflow-hidden border border-stone-100">
         
         {/* Glow vector overlay */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full filter blur-[120px] pointer-events-none" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-          
-          {/* Details Column */}
-          <div className="lg:col-span-6 flex flex-col justify-center">
-            <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-2 block">Connect Directly</span>
-            <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-6">
-              Experience Pranahuti Live with Gopal
+        <div className="relative z-10 flex flex-col items-center">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs text-blue-655 font-bold uppercase tracking-wider mb-2 block">World of Stillness</span>
+            <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-4">
+              Meditation Gallery
             </h3>
-            <p className="text-stone-700 leading-relaxed mb-6 font-inter">
-              Heartfulness guided transmission sessions are completely free of charge, in alignment with traditional spiritual principles. Book an individual 1-on-1 virtual session, or register for the daily group meditation masterclass.
+            <p className="text-stone-600 font-inter leading-relaxed max-w-2xl mx-auto">
+              A glimpse into the quiet sanctuary. Explore moments of deep absorption, collective harmony, and inner stillness. Click on any image to open the interactive lightbox.
             </p>
-
-            {/* Quick Details Check */}
-            <div className="flex flex-col gap-4 mt-2">
-              {[
-                { icon: Clock, title: 'Session Times', desc: 'Individual slots: 6:00 AM & 7:30 PM (IST) daily.' },
-                { icon: MapPin, title: 'Interactive Portal', desc: 'Conducted live via Zoom/Google Meet with interactive Q&A.' },
-                { icon: Sparkles, title: 'Yogic Cleanse Included', desc: 'Every booking includes a 10-minute active mental impression clearance.' }
-              ].map((item, idx) => (
-                <div key={idx} className="flex gap-4 items-start">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-blue-100/50 flex items-center justify-center text-blue-655 flex-shrink-0 shadow-sm">
-                    <item.icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-stone-900">{item.title}</h4>
-                    <p className="text-xs text-stone-600 mt-0.5">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Booking Form Card Column */}
-          <div className="lg:col-span-6 flex justify-center">
-            <div className="glass-panel p-8 w-full max-w-md border border-black/5 shadow-md">
-              {!isBooked ? (
-                <form onSubmit={handleBookingSubmit} className="flex flex-col gap-4">
-                  <h4 className="text-xl font-bold font-outfit text-stone-900 mb-2">Request Free Booking</h4>
-                  
-                  <div>
-                    <label className="text-[10px] text-stone-500 font-bold uppercase tracking-wider block mb-1">Your Full Name</label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      placeholder="e.g. Aryan Maurya"
-                      className="glass-input w-full p-3 text-sm focus:outline-none"
-                    />
-                  </div>
+          {/* Grid layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+            {GALLERY_IMAGES.map((img, idx) => (
+              <div 
+                key={idx}
+                onClick={() => setLightboxIndex(idx)}
+                className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl border border-black/5 bg-white aspect-square transition-all duration-500 transform hover:-translate-y-1"
+              >
+                {/* Image */}
+                <img
+                  src={img.src}
+                  alt={img.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
 
-                  <div>
-                    <label className="text-[10px] text-stone-500 font-bold uppercase tracking-wider block mb-1">Your Email</label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      placeholder="e.g. aryan@gmail.com"
-                      className="glass-input w-full p-3 text-sm focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="text-[10px] text-stone-500 font-bold uppercase tracking-wider block mb-1">Experience</label>
-                      <select
-                        value={formData.experience}
-                        onChange={(e) => setFormData({...formData, experience: e.target.value})}
-                        className="glass-input w-full p-3 text-sm focus:outline-none bg-white text-stone-900 cursor-pointer"
-                      >
-                        <option value="beginner">Beginner</option>
-                        <option value="intermediate">Have Meditated</option>
-                        <option value="advanced">Experienced</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="text-[10px] text-stone-500 font-bold uppercase tracking-wider block mb-1">Select Date</label>
-                      <input
-                        type="date"
-                        required
-                        value={formData.date}
-                        onChange={(e) => setFormData({...formData, date: e.target.value})}
-                        className="glass-input w-full p-3 text-sm focus:outline-none bg-white text-stone-900 cursor-pointer"
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="btn-primary w-full py-4 mt-2 flex items-center justify-center gap-2 font-bold font-outfit uppercase text-xs tracking-wider"
-                  >
-                    <Send className="w-4 h-4" />
-                    Book Free Session
-                  </button>
-
-                  <span className="text-[10px] text-stone-500 text-center mt-2 leading-relaxed block font-inter">
-                    *Heartfulness transmission sessions are absolutely free of charge. No payment detail required.
-                  </span>
-                </form>
-              ) : (
-                <div className="text-center py-8 flex flex-col items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-600 mb-6 animate-bounce">
-                    <CheckCircle2 className="w-8 h-8 fill-current" />
-                  </div>
-                  <h4 className="text-2xl font-bold font-outfit text-stone-900 mb-2">Session Booked!</h4>
-                  <p className="text-stone-700 text-sm leading-relaxed max-w-sm mb-6 font-inter">
-                    Namaste <strong className="font-bold">{formData.name}</strong>. Gopal has received your request. We have emailed the meditation guidelines and live Zoom credentials to:
-                    <br />
-                    <span className="text-blue-650 font-bold mt-1.5 block">{formData.email}</span>
+                {/* Subtle overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                  <h4 className="text-white text-lg font-bold font-outfit leading-none">{img.title}</h4>
+                  <p className="text-stone-300 text-xs mt-1.5 font-inter leading-relaxed line-clamp-2">
+                    {img.desc}
                   </p>
-                  
-                  <button
-                    onClick={() => {
-                      setIsBooked(false);
-                      setFormData({name:'', email:'', experience:'beginner', sessionType:'transmission-intro', date:''});
-                    }}
-                    className="btn-secondary py-3 px-6 text-xs uppercase tracking-wider font-bold"
-                  >
-                    Schedule Another
-                  </button>
                 </div>
-              )}
-            </div>
+              </div>
+            ))}
           </div>
-
         </div>
       </section>
 
@@ -489,14 +400,14 @@ export default function Home() {
           </div>
 
           <p className="text-stone-600 text-xs md:text-sm max-w-xl leading-relaxed mb-8 font-inter">
-            Experience internal cleanliness and transmission-driven silence. Guided classes and individual cleaning sessions directed by Trainer Gopal in connection with Heartfulness Sahaj Marg spiritual tradition.
+            Experience internal cleanliness and transmission-driven silence. Discover spiritual absorption and daily cleaning practices guided by Trainer Gopal in connection with the Heartfulness Sahaj Marg spiritual tradition.
           </p>
 
           {/* Quick legal and links */}
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-stone-500 text-xs mb-8 font-medium">
             <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('about')}>Instructor bio</span>
             <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('philosophy')}>Pillars</span>
-            <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('schedule')}>Daily schedule</span>
+            <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('gallery')}>Meditation Gallery</span>
           </div>
 
           <div className="text-stone-500 text-[10px] md:text-xs font-inter">
@@ -504,6 +415,70 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* GALLERY LIGHTBOX MODAL */}
+      {lightboxIndex !== null && (
+        <div className="fixed inset-0 z-50 bg-stone-950/90 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300">
+          {/* Close button */}
+          <button
+            onClick={() => setLightboxIndex(null)}
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white cursor-pointer z-50 transition-colors"
+            title="Close Lightbox"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Left arrow */}
+          <button
+            onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length : null))}
+            className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white cursor-pointer z-50 transition-colors hidden sm:flex"
+            title="Previous Image"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          {/* Image Container with text below */}
+          <div className="max-w-4xl max-h-[85vh] flex flex-col items-center gap-6 relative select-none">
+            <img
+              src={GALLERY_IMAGES[lightboxIndex].src}
+              alt={GALLERY_IMAGES[lightboxIndex].title}
+              className="max-h-[70vh] rounded-2xl object-contain shadow-2xl border border-white/10"
+            />
+            
+            <div className="text-center text-white max-w-xl px-4">
+              <h4 className="text-xl md:text-2xl font-bold font-outfit">{GALLERY_IMAGES[lightboxIndex].title}</h4>
+              <p className="text-stone-400 text-sm md:text-base mt-2 font-inter leading-relaxed">
+                {GALLERY_IMAGES[lightboxIndex].desc}
+              </p>
+            </div>
+            
+            {/* Mobile swipe indicators */}
+            <div className="flex gap-4 sm:hidden mt-2">
+              <button
+                onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length : null))}
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white cursor-pointer"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev + 1) % GALLERY_IMAGES.length : null))}
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white cursor-pointer"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Right arrow */}
+          <button
+            onClick={() => setLightboxIndex((prev) => (prev !== null ? (prev + 1) % GALLERY_IMAGES.length : null))}
+            className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white cursor-pointer z-50 transition-colors hidden sm:flex"
+            title="Next Image"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
+      )}
 
     </div>
   );

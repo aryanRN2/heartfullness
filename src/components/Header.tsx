@@ -70,7 +70,7 @@ export default function Header() {
           {[
             { id: 'about', label: 'Meet Gopal' },
             { id: 'philosophy', label: 'Philosophy' },
-            { id: 'schedule', label: 'Guided Sessions' },
+            { id: 'gallery', label: 'Gallery' },
           ].map((item) => (
             <button
               key={item.id}
@@ -82,14 +82,14 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Desktop Booking CTA */}
+        {/* Desktop Gallery CTA */}
         <div className="hidden md:block">
           <button
-            onClick={() => scrollToSection('schedule')}
+            onClick={() => scrollToSection('gallery')}
             className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-550 rounded-xl text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-blue-500/10 hover:shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-1.5"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            Book Free Session
+            Explore Gallery
           </button>
         </div>
 
@@ -109,7 +109,7 @@ export default function Header() {
             {[
               { id: 'about', label: 'Meet Gopal' },
               { id: 'philosophy', label: 'The Philosophy' },
-              { id: 'schedule', label: 'Schedule Sessions' },
+              { id: 'gallery', label: 'Meditation Gallery' },
             ].map((item) => (
               <button
                 key={item.id}
@@ -121,10 +121,10 @@ export default function Header() {
             ))}
             
             <button
-              onClick={() => scrollToSection('schedule')}
+              onClick={() => scrollToSection('gallery')}
               className="mt-4 w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-550 rounded-xl text-sm font-bold uppercase tracking-wider text-white shadow-lg text-center"
             >
-              Book Free Session
+              Explore Gallery
             </button>
           </div>
         </div>
