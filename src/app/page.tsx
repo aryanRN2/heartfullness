@@ -23,8 +23,8 @@ import MeditationTimer from '@/components/MeditationTimer';
 const QUOTES = [
   {
     text: "The heart is the master of our system. When we purify the heart, the entire being becomes harmonious and aligned with the divine light.",
-    author: "Gopal Ram",
-    title: "Heartfulness Instructor"
+    author: "Gopal",
+    title: "Heartfulness Trainer"
   },
   {
     text: "Yogic transmission (Pranahuti) is the unique catalyst in Heartfulness. It is not just instruction, but an active flow of spiritual energy directly to the seeker's heart.",
@@ -33,7 +33,7 @@ const QUOTES = [
   },
   {
     text: "Cleaning is the daily practice of releasing mental impressions (samskaras). By removing yesterday's heavy baggage, we greet today with complete lightness.",
-    author: "Gopal Ram",
+    author: "Gopal",
     title: "Daily Practice Guide"
   }
 ];
@@ -84,8 +84,7 @@ export default function Home() {
       
       {/* 1. HERO SECTION */}
       <section className="min-h-screen w-full flex flex-col items-center justify-center relative px-6 text-center pt-24 pb-16">
-
-
+        
         {/* Large spiritual meditation headlines */}
         <h2 className="text-4xl md:text-7xl font-extrabold font-outfit max-w-5xl leading-tight md:leading-tight text-stone-900 mb-6">
           Connect with Your Heart, <br />
@@ -95,7 +94,7 @@ export default function Home() {
         </h2>
 
         <p className="text-stone-700 text-base md:text-xl max-w-2xl font-inter leading-relaxed mb-10">
-          Unlock the natural flow of spiritual energy. Experience heart-focused meditation guided by <strong className="font-bold text-blue-600">Gopal Ram</strong>, a certified Heartfulness Meditation Trainer dedicated to helping you cultivate deep inner coherence.
+          Unlock the natural flow of spiritual energy. Experience heart-focused meditation guided by <strong className="font-bold text-blue-600">Gopal</strong>, a certified Heartfulness Meditation Trainer dedicated to helping you cultivate deep inner coherence.
         </p>
 
         {/* Actions bar */}
@@ -124,7 +123,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. ABOUT GOPAL RAM (BIOGRAPHY) */}
+      {/* 2. ABOUT GOPAL (BIOGRAPHY) */}
       <section id="about" className="py-24 md:py-32 w-full max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
@@ -135,7 +134,7 @@ export default function Home() {
                 {/* Real Trainer Image */}
                 <img
                   src="/trainer.jpg"
-                  alt="Gopal Ram - Heartfulness Meditation Trainer"
+                  alt="Gopal - Heartfulness Meditation Trainer"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
@@ -143,9 +142,9 @@ export default function Home() {
             
             {/* Biography details placed cleanly below the image instead of overlaying it */}
             <div className="text-center">
-              <h3 className="text-2xl md:text-3xl font-extrabold font-outfit text-stone-900 leading-none">Gopal Ram</h3>
-              <span className="text-xs uppercase font-bold tracking-widest text-blue-600 mt-2.5 block font-inter">
-                Certified Heartfulness Guide
+              <h3 className="text-2xl md:text-3xl font-extrabold font-outfit text-stone-900 leading-none">Gopal</h3>
+              <span className="text-xs uppercase font-bold tracking-widest text-blue-650 mt-2.5 block font-inter">
+                Heartfulness Trainer
               </span>
               <p className="text-stone-600 text-xs md:text-sm mt-3 italic leading-relaxed max-w-[320px]">
                 "Spreading the divine light of yogic transmission for 20+ years."
@@ -153,7 +152,7 @@ export default function Home() {
             </div>
 
             {/* Float badges around frame */}
-            <div className="absolute -top-4 -right-4 md:-right-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
+            <div className="absolute top-[80px] -right-4 md:-right-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
               <ShieldCheck className="w-5 h-5 text-emerald-600" />
               <div className="text-left">
                 <p className="text-[10px] text-stone-500 font-bold uppercase leading-none">Trainer Since</p>
@@ -161,7 +160,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="absolute -bottom-4 -left-4 md:-left-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
+            <div className="absolute top-[280px] -left-4 md:-left-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
               <Calendar className="w-5 h-5 text-blue-500" />
               <div className="text-left">
                 <p className="text-[10px] text-stone-500 font-bold uppercase leading-none">Guided Sessions</p>
@@ -172,13 +171,13 @@ export default function Home() {
 
           {/* Biographical content */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-2 block">Spiritual Mentorship</span>
+            <span className="text-xs text-blue-655 font-bold uppercase tracking-wider mb-2 block">Spiritual Mentorship</span>
             <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-6">
               Guiding Seeker’s Hearts Back to the Source
             </h3>
             
             <p className="text-stone-700 leading-relaxed mb-6 font-inter">
-              Gopal Ram has spent over two decades facilitating spiritual transition and cleaning sessions. Under the Heartfulness lineage, he conducts masterclasses globally, translating highly complex metaphysical yogic practices into modern, highly accessible habits.
+              Gopal has spent over two decades facilitating spiritual transition and cleaning sessions. Under the Heartfulness lineage, he conducts masterclasses globally, translating highly complex metaphysical yogic practices into modern, highly accessible habits.
             </p>
 
             <p className="text-stone-700 leading-relaxed mb-8 font-inter">
@@ -195,7 +194,7 @@ export default function Home() {
               ].map((item) => (
                 <div key={item.title} className="flex gap-3">
                   <div className="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-650" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-655" />
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-stone-900">{item.title}</h4>
@@ -280,7 +279,7 @@ export default function Home() {
               <h4 className="text-base font-bold text-stone-900 leading-none">
                 {QUOTES[activeQuote].author}
               </h4>
-              <span className="text-xs text-blue-600 font-bold uppercase tracking-wider mt-1.5">
+              <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mt-1.5">
                 {QUOTES[activeQuote].title}
               </span>
             </div>
@@ -306,7 +305,7 @@ export default function Home() {
       {/* 4. MEDITATION SANCTUARY (THE UTILITIES HUB) */}
       <section id="sanctuary" className="py-24 md:py-32 w-full max-w-7xl px-6 flex flex-col gap-16">
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-2 block">Practice Sanctuary</span>
+          <span className="text-xs text-blue-655 font-bold uppercase tracking-wider mb-2 block">Practice Sanctuary</span>
           <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-4">
             Harmonize Mind & Body Instantly
           </h3>
@@ -334,7 +333,7 @@ export default function Home() {
           <div className="lg:col-span-6 flex flex-col justify-center">
             <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-2 block">Connect Directly</span>
             <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-6">
-              Experience Pranahuti Live with Gopal Ram
+              Experience Pranahuti Live with Gopal
             </h3>
             <p className="text-stone-700 leading-relaxed mb-6 font-inter">
               Heartfulness guided transmission sessions are completely free of charge, in alignment with traditional spiritual principles. Book an individual 1-on-1 virtual session, or register for the daily group meditation masterclass.
@@ -348,7 +347,7 @@ export default function Home() {
                 { icon: Sparkles, title: 'Yogic Cleanse Included', desc: 'Every booking includes a 10-minute active mental impression clearance.' }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-4 items-start">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-blue-100/50 flex items-center justify-center text-blue-650 flex-shrink-0 shadow-sm">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-blue-100/50 flex items-center justify-center text-blue-655 flex-shrink-0 shadow-sm">
                     <item.icon className="w-5 h-5" />
                   </div>
                   <div>
@@ -436,7 +435,7 @@ export default function Home() {
                   </div>
                   <h4 className="text-2xl font-bold font-outfit text-stone-900 mb-2">Session Booked!</h4>
                   <p className="text-stone-700 text-sm leading-relaxed max-w-sm mb-6 font-inter">
-                    Namaste <strong className="font-bold">{formData.name}</strong>. Gopal Ram has received your request. We have emailed the meditation guidelines and live Zoom credentials to:
+                    Namaste <strong className="font-bold">{formData.name}</strong>. Gopal has received your request. We have emailed the meditation guidelines and live Zoom credentials to:
                     <br />
                     <span className="text-blue-650 font-bold mt-1.5 block">{formData.email}</span>
                   </p>
@@ -472,7 +471,7 @@ export default function Home() {
           </div>
 
           <p className="text-stone-600 text-xs md:text-sm max-w-xl leading-relaxed mb-8 font-inter">
-            Experience internal cleanliness and transmission-driven silence. Guided classes and individual cleaning sessions directed by trainer Gopal Ram in connection with Heartfulness Sahaj Marg spiritual tradition.
+            Experience internal cleanliness and transmission-driven silence. Guided classes and individual cleaning sessions directed by Trainer Gopal in connection with Heartfulness Sahaj Marg spiritual tradition.
           </p>
 
           {/* Quick legal and links */}
@@ -484,7 +483,7 @@ export default function Home() {
           </div>
 
           <div className="text-stone-500 text-[10px] md:text-xs font-inter">
-            © {new Date().getFullYear()} Gopal Ram Heartfulness Meditation. All rights reserved. Spiritual meditation is a voluntary practice.
+            © {new Date().getFullYear()} Gopal Heartfulness Meditation. All rights reserved. Spiritual meditation is a voluntary practice.
           </div>
         </div>
       </footer>

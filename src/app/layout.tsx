@@ -4,12 +4,12 @@ import SmoothScroll from "@/components/SmoothScroll";
 import HeartParticles from "@/components/HeartParticles";
 
 export const metadata: Metadata = {
-  title: "Gopal Ram | Heartfulness Meditation & Inner Coherence",
-  description: "Experience the profound peace of transmission-based Heartfulness Meditation. Guided by certified instructor Gopal Ram, explore breath pacer sanctuaries, interactive timers, and virtual cleaning sessions.",
-  keywords: "Heartfulness, Meditation, Gopal Ram, Transmission, Pranahuti, Breath pacer, Coherent breathing, Meditation timer, Inner peace, Spiritual cleaning",
+  title: "Gopal | Heartfulness Meditation Trainer",
+  description: "Experience the profound peace of transmission-based Heartfulness Meditation. Guided by certified Trainer Gopal, explore breath pacer sanctuaries, interactive timers, and virtual cleaning sessions.",
+  keywords: "Heartfulness, Meditation, Gopal, Trainer, Transmission, Pranahuti, Breath pacer, Coherent breathing, Meditation timer, Inner peace, Spiritual cleaning",
   openGraph: {
-    title: "Gopal Ram | Heartfulness Meditation & Coherence",
-    description: "Dive into peace with custom 3D WebGL particle meditation guides, interactive tools, and certified guided instruction from Gopal Ram.",
+    title: "Gopal | Heartfulness Meditation Trainer",
+    description: "Dive into peace with custom 3D WebGL particle meditation guides, interactive tools, and certified guided instruction from Trainer Gopal.",
     type: "website",
   }
 };

@@ -40,7 +40,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'py-4 bg-white/75 border-b border-black/5 backdrop-blur-md shadow-lg shadow-blue-50/20'
+          ? 'py-4 bg-white/75 border-b border-black/5 backdrop-blur-md shadow-lg shadow-blue-5/20'
           : 'py-6 bg-transparent'
       }`}
     >
@@ -60,7 +60,7 @@ export default function Header() {
               HEARTFULNESS
             </h1>
             <span className="text-[10px] uppercase font-bold text-blue-600 tracking-widest leading-none">
-              Gopal Ram Meditation
+              Gopal Meditation Trainer
             </span>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {[
-            { id: 'about', label: 'Meet Gopal Ram' },
+            { id: 'about', label: 'Meet Gopal' },
             { id: 'philosophy', label: 'Philosophy' },
             { id: 'sanctuary', label: 'Sanctuary' },
             { id: 'schedule', label: 'Guided Sessions' },
@@ -108,7 +108,7 @@ export default function Header() {
         <div className="md:hidden fixed top-[73px] left-0 right-0 bottom-0 bg-white/95 backdrop-blur-lg z-40 border-t border-black/5 p-6 animate-in fade-in duration-300">
           <div className="flex flex-col gap-6 mt-4">
             {[
-              { id: 'about', label: 'Meet Gopal Ram' },
+              { id: 'about', label: 'Meet Gopal' },
               { id: 'philosophy', label: 'The Philosophy' },
               { id: 'sanctuary', label: 'Practice Sanctuary' },
               { id: 'schedule', label: 'Schedule Sessions' },
