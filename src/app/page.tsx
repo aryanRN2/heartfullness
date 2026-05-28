@@ -7,6 +7,7 @@ import {
   BookOpen, 
   Calendar, 
   ChevronRight, 
+  ChevronLeft,
   Quote, 
   User, 
   ShieldCheck, 
@@ -269,6 +270,23 @@ export default function Home() {
             <Quote className="w-24 h-24 stroke-[4]" />
           </div>
 
+          {/* Side navigation arrows for desktop */}
+          <button
+            onClick={() => setActiveQuote((prev) => (prev - 1 + QUOTES.length) % QUOTES.length)}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/40 hover:bg-white/80 border border-black/5 flex items-center justify-center text-stone-600 hover:text-blue-600 shadow-sm transition-all duration-300 z-20 cursor-pointer hidden md:flex"
+            aria-label="Previous quote"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <button
+            onClick={() => setActiveQuote((prev) => (prev + 1) % QUOTES.length)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/40 hover:bg-white/80 border border-black/5 flex items-center justify-center text-stone-600 hover:text-blue-600 shadow-sm transition-all duration-300 z-20 cursor-pointer hidden md:flex"
+            aria-label="Next quote"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
           <div className="relative z-10 flex flex-col items-center text-center">
             {/* Smooth transition container */}
             <div className="min-h-[140px] flex flex-col items-center justify-center transition-all duration-500">
@@ -283,18 +301,36 @@ export default function Home() {
               </span>
             </div>
 
-            {/* Slider Dots */}
-            <div className="flex gap-2.5 mt-8">
-              {QUOTES.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveQuote(idx)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    activeQuote === idx ? 'bg-blue-600 w-6' : 'bg-stone-300 hover:bg-stone-400'
-                  }`}
-                  title={`Go to quote ${idx + 1}`}
-                />
-              ))}
+            {/* Slider Dots and Control Buttons */}
+            <div className="flex items-center gap-4 mt-8">
+              <button
+                onClick={() => setActiveQuote((prev) => (prev - 1 + QUOTES.length) % QUOTES.length)}
+                className="w-8 h-8 rounded-full bg-white/45 hover:bg-white/80 border border-black/5 flex items-center justify-center text-stone-600 hover:text-blue-600 shadow-sm transition-all duration-300 cursor-pointer md:hidden"
+                aria-label="Previous quote"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <div className="flex gap-2.5">
+                {QUOTES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveQuote(idx)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      activeQuote === idx ? 'bg-blue-600 w-6' : 'bg-stone-300 hover:bg-stone-400'
+                    }`}
+                    title={`Go to quote ${idx + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={() => setActiveQuote((prev) => (prev + 1) % QUOTES.length)}
+                className="w-8 h-8 rounded-full bg-white/45 hover:bg-white/80 border border-black/5 flex items-center justify-center text-stone-600 hover:text-blue-600 shadow-sm transition-all duration-300 cursor-pointer md:hidden"
+                aria-label="Next quote"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </div>
