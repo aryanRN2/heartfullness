@@ -99,7 +99,7 @@ export default function Home() {
         </h2>
 
         <p className="text-stone-700 text-base md:text-xl max-w-2xl font-inter leading-relaxed mb-10">
-          Unlock the natural flow of spiritual energy. Engage in heart-focused meditation guided by certified trainer **Gopal Ram** to cultivate deep inner coherence.
+          Unlock the natural flow of spiritual energy. Experience heart-focused meditation guided by <strong className="font-bold text-blue-600">Gopal Ram</strong>, a certified Heartfulness Meditation Trainer dedicated to helping you cultivate deep inner coherence.
         </p>
 
         {/* Actions bar */}
@@ -441,7 +441,7 @@ export default function Home() {
                   </div>
                   <h4 className="text-2xl font-bold font-outfit text-stone-900 mb-2">Session Booked!</h4>
                   <p className="text-stone-700 text-sm leading-relaxed max-w-sm mb-6 font-inter">
-                    Namaste **{formData.name}**. Gopal Ram has received your request. We have emailed the meditation guidelines and live Zoom credentials to:
+                    Namaste <strong className="font-bold">{formData.name}</strong>. Gopal Ram has received your request. We have emailed the meditation guidelines and live Zoom credentials to:
                     <br />
                     <span className="text-blue-650 font-bold mt-1.5 block">{formData.email}</span>
                   </p>
