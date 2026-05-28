@@ -136,9 +136,9 @@ export default function HeartParticles() {
         // Outer faint glow
         const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
         gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-        gradient.addColorStop(0.2, 'rgba(255, 255, 255, 0.8)');
-        gradient.addColorStop(0.5, 'rgba(255, 100, 200, 0.3)');
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.8)');
+        gradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.2)');
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
         
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 64, 64);
@@ -149,11 +149,12 @@ export default function HeartParticles() {
 
     // --- MATERIAL SETUP ---
     const material = new THREE.PointsMaterial({
-      size: 0.36,
+      size: 0.38,
       vertexColors: true,
       transparent: true,
       depthWrite: false,
-      blending: THREE.AdditiveBlending,
+      blending: THREE.NormalBlending,
+      opacity: 0.85,
       map: createCircleTexture(),
     });
 
@@ -275,7 +276,7 @@ export default function HeartParticles() {
     <div 
       ref={containerRef} 
       className="fixed inset-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 1, mixBlendMode: 'screen' }}
+      style={{ zIndex: 1 }}
     />
   );
 }

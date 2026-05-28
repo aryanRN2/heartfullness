@@ -103,7 +103,7 @@ export default function MeditationTimer() {
 
         // Setup volume envelope
         gain.gain.setValueAtTime(0, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.2, ctx.currentTime + 3.0); // Gentle fade in
+        gain.gain.linearRampToValueAtTime(0.18, ctx.currentTime + 3.0); // Gentle fade in
 
         // Connect nodes
         osc1.connect(filter);
@@ -150,7 +150,7 @@ export default function MeditationTimer() {
 
         const gain = ctx.createGain();
         gain.gain.setValueAtTime(0, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.25, ctx.currentTime + 4.0); // Slow fade-in
+        gain.gain.linearRampToValueAtTime(0.22, ctx.currentTime + 4.0); // Slow fade-in
 
         whiteNoise.connect(filter);
         filter.connect(gain);
@@ -246,23 +246,23 @@ export default function MeditationTimer() {
   const strokeDashoffset = 502 * (1 - progressRatio); // SVG path length 502
 
   return (
-    <div className="glass-panel p-8 md:p-10 max-w-4xl mx-auto w-full flex flex-col items-center">
+    <div className="glass-panel p-8 md:p-10 max-w-4xl mx-auto w-full flex flex-col items-center border border-black/5 shadow-md">
       <div className="flex items-center gap-2 mb-6">
-        <Sparkles className="w-5 h-5 text-amber-400" />
-        <h3 className="text-2xl font-bold font-outfit">Guided Meditation Sanctuary</h3>
+        <Sparkles className="w-5 h-5 text-amber-500" />
+        <h3 className="text-2xl font-bold font-outfit text-stone-900">Guided Meditation Sanctuary</h3>
       </div>
 
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12 w-full mt-4">
         
         {/* Circle Progress Timer */}
-        <div className="relative w-64 h-64 flex items-center justify-center">
+        <div className="relative w-64 h-64 flex items-center justify-center bg-white rounded-full shadow-inner shadow-stone-100">
           <svg className="w-full h-full transform -rotate-90">
             {/* Background Circle */}
             <circle
               cx="128"
               cy="128"
               r="80"
-              className="stroke-stone-800"
+              className="stroke-stone-100"
               strokeWidth="6"
               fill="transparent"
             />
@@ -271,7 +271,7 @@ export default function MeditationTimer() {
               cx="128"
               cy="128"
               r="80"
-              className="stroke-violet-500 transition-all duration-300"
+              className="stroke-violet-650 transition-all duration-300"
               strokeWidth="6"
               fill="transparent"
               strokeDasharray="502"
@@ -282,10 +282,10 @@ export default function MeditationTimer() {
 
           {/* Core Text Info */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-5xl font-extrabold font-outfit text-white tracking-wider glow-text-accent">
+            <span className="text-5xl font-extrabold font-outfit text-stone-900 tracking-wider glow-text-accent">
               {formatTime(timeLeft)}
             </span>
-            <span className="text-xs uppercase font-bold text-violet-300 tracking-widest mt-1">
+            <span className="text-xs uppercase font-bold text-violet-650 tracking-widest mt-1">
               {isRunning ? 'Absorbing...' : 'Meditate'}
             </span>
           </div>
@@ -295,7 +295,7 @@ export default function MeditationTimer() {
         <div className="flex-grow flex flex-col justify-between w-full lg:max-w-md">
           {/* Duration Selector */}
           <div className="mb-6">
-            <label className="text-xs font-bold text-violet-300 uppercase tracking-wider block mb-2.5">
+            <label className="text-xs font-bold text-violet-650 uppercase tracking-wider block mb-2.5">
               Meditation Duration (Minutes)
             </label>
             <div className="grid grid-cols-5 gap-2">
@@ -304,10 +304,10 @@ export default function MeditationTimer() {
                   key={t}
                   disabled={isRunning}
                   onClick={() => setDuration(t)}
-                  className={`py-2 px-1 rounded-xl text-sm font-semibold font-outfit transition-all duration-300 ${
+                  className={`py-2 px-1 rounded-xl text-sm font-semibold font-outfit transition-all duration-300 cursor-pointer ${
                     duration === t
-                      ? 'bg-violet-600/30 border border-violet-500/50 text-white'
-                      : 'bg-white/5 border border-white/5 text-stone-400 hover:bg-white/10 hover:text-white disabled:opacity-50'
+                      ? 'bg-violet-600/10 border border-violet-500/40 text-violet-750'
+                      : 'bg-stone-50 border border-stone-200/60 text-stone-600 hover:bg-stone-100 hover:text-stone-900 disabled:opacity-50'
                   }`}
                 >
                   {t}m
@@ -318,7 +318,7 @@ export default function MeditationTimer() {
 
           {/* Soundscapes Selector */}
           <div className="mb-6">
-            <label className="text-xs font-bold text-violet-300 uppercase tracking-wider block mb-2.5">
+            <label className="text-xs font-bold text-violet-650 uppercase tracking-wider block mb-2.5">
               Calming Audio Environment
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -333,10 +333,10 @@ export default function MeditationTimer() {
                     initAudioContext();
                     setAmbientSound(s.type as AmbientSound);
                   }}
-                  className={`py-2.5 px-2 rounded-xl text-xs font-semibold font-outfit transition-all duration-300 ${
+                  className={`py-2.5 px-2 rounded-xl text-xs font-semibold font-outfit transition-all duration-300 cursor-pointer ${
                     ambientSound === s.type
-                      ? 'bg-violet-600/30 border border-violet-500/50 text-white'
-                      : 'bg-white/5 border border-white/5 text-stone-400 hover:bg-white/10 hover:text-white'
+                      ? 'bg-violet-600/10 border border-violet-500/40 text-violet-750'
+                      : 'bg-stone-50 border border-stone-200/60 text-stone-600 hover:bg-stone-100 hover:text-stone-900'
                   }`}
                 >
                   {s.label}
@@ -350,9 +350,9 @@ export default function MeditationTimer() {
             {/* Play/Pause Button */}
             <button
               onClick={handlePlayPause}
-              className={`flex-grow py-4 rounded-xl flex items-center justify-center gap-2 font-bold font-outfit uppercase tracking-wider transition-all duration-300 ${
+              className={`flex-grow py-4 rounded-xl flex items-center justify-center gap-2 font-bold font-outfit uppercase tracking-wider transition-all duration-300 cursor-pointer ${
                 isRunning
-                  ? 'bg-stone-800 border border-stone-700 text-stone-300 hover:bg-stone-700'
+                  ? 'bg-stone-100 border border-stone-200 text-stone-700 hover:bg-stone-200'
                   : 'btn-primary'
               }`}
             >
@@ -372,7 +372,7 @@ export default function MeditationTimer() {
             {/* Reset Button */}
             <button
               onClick={handleReset}
-              className="p-4 bg-white/5 border border-white/5 hover:bg-white/10 rounded-xl text-stone-300 hover:text-white transition-all duration-300"
+              className="p-4 bg-stone-50 border border-stone-200/60 hover:bg-stone-100 rounded-xl text-stone-600 hover:text-stone-900 transition-all duration-300 cursor-pointer"
               title="Reset Timer"
             >
               <RotateCcw className="w-5 h-5" />
@@ -385,10 +385,10 @@ export default function MeditationTimer() {
                 if (!isMuted) triggerCompletionBell(); // Chime bell as feedback
                 setIsMuted(!isMuted);
               }}
-              className="p-4 bg-white/5 border border-white/5 hover:bg-white/10 rounded-xl text-stone-300 hover:text-white transition-all duration-300"
+              className="p-4 bg-stone-50 border border-stone-200/60 hover:bg-stone-100 rounded-xl text-stone-600 hover:text-stone-900 transition-all duration-300 cursor-pointer"
               title={isMuted ? 'Unmute Bell' : 'Mute Bell / Test Chime'}
             >
-              {isMuted ? <VolumeX className="w-5 h-5 text-rose-400" /> : <Volume2 className="w-5 h-5 text-violet-400" />}
+              {isMuted ? <VolumeX className="w-5 h-5 text-rose-600" /> : <Volume2 className="w-5 h-5 text-violet-600" />}
             </button>
           </div>
         </div>
