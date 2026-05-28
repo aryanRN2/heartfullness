@@ -39,86 +39,156 @@ export default function HeartParticles() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
+    // --- BEZIER SPLINES FOR OFFICIAL HEARTFULNESS LOGO ---
+    // The logo contains:
+    // 1. Head (circular ring at the top)
+    // 2. Left Wing swoosh
+    // 3. Central Swirl loop
+    // 4. Right Wing and torso sweep down to the base
+    // 5. Left Lotus Leg bottom loop
+    // 6. Right Lotus Leg bottom loop
+    
+    // Y offsets shift the center of the logo to fit beautifully
+    const yShift = 3.5;
+
+    const leftWingCurve = new THREE.CubicBezierCurve3(
+      new THREE.Vector3(0, 4.2 + yShift, 0),
+      new THREE.Vector3(-5.5, 9.0 + yShift, 0),
+      new THREE.Vector3(-7.5, 1.0 + yShift, 0),
+      new THREE.Vector3(-6.2, -1.2 + yShift, 0)
+    );
+
+    const centerLoopCurve = new THREE.CubicBezierCurve3(
+      new THREE.Vector3(-0.1, 4.2 + yShift, 0),
+      new THREE.Vector3(-1.8, -1.8 + yShift, 0),
+      new THREE.Vector3(-3.2, 2.0 + yShift, 0),
+      new THREE.Vector3(0.1, 4.2 + yShift, 0)
+    );
+
+    const rightWingCurve = new THREE.CubicBezierCurve3(
+      new THREE.Vector3(0.1, 4.2 + yShift, 0),
+      new THREE.Vector3(5.5, 9.0 + yShift, 0),
+      new THREE.Vector3(7.5, 1.0 + yShift, 0),
+      new THREE.Vector3(0, -6.5 + yShift, 0)
+    );
+
+    const leftLotusCurve = new THREE.CubicBezierCurve3(
+      new THREE.Vector3(0, -6.5 + yShift, 0),
+      new THREE.Vector3(-7.0, -10.5 + yShift, 0),
+      new THREE.Vector3(-15.0, -7.5 + yShift, 0),
+      new THREE.Vector3(-5.0, -5.5 + yShift, 0)
+    );
+
+    const rightLotusCurve = new THREE.CubicBezierCurve3(
+      new THREE.Vector3(0, -6.5 + yShift, 0),
+      new THREE.Vector3(7.0, -10.5 + yShift, 0),
+      new THREE.Vector3(15.0, -7.5 + yShift, 0),
+      new THREE.Vector3(5.0, -5.5 + yShift, 0)
+    );
+
     // --- PARTICLE GENERATION ---
     const particleCount = 4500;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
     
-    // Store original heart positions and final dispersed positions
-    const heartPositions: number[] = [];
+    // Store original logo positions and final dispersed positions
+    const basePositions: number[] = [];
     const dispersedPositions: number[] = [];
     const particleSpeeds: number[] = [];
     const randomOffsets: number[] = [];
 
-    // Helper: Create a volumetric 3D heart parametric coordinate
-    // Equation based on: 
-    // x = 16 * sin^3(t)
-    // y = 13 * cos(t) - 5 * cos(2t) - 2 * cos(3t) - cos(4t)
-    // z = volumetric offset
-    const getHeartPoint = (i: number) => {
-      // Distribution parameters
-      const t = Math.PI * 2 * Math.random();
-      const p = Math.PI * (Math.random() - 0.5); // polar angle for 3D thickness
-
-      // Parametric 2D heart projection
-      const x2d = 16 * Math.pow(Math.sin(t), 3);
-      const y2d = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
-      
-      // Expand into a volumetric 3D shell
-      const thickness = 4 * Math.sin(p);
-      const scale = 0.85;
-
-      // Adjust axis: x, y (inverted), z
-      return {
-        x: x2d * scale,
-        y: y2d * scale * 0.95,
-        z: thickness * scale * 1.5
-      };
-    };
-
-    // Color gradients (Spiritual Blue, Sky Blue, and Ice Silver)
-    const colorA = new THREE.Color('#1e40af'); // Serene Deep Blue
-    const colorB = new THREE.Color('#0ea5e9'); // Clear Sky Blue
-    const colorC = new THREE.Color('#93c5fd'); // Glowing Ice Silver
+    // Colors mapping to replicate the logo exactly:
+    const colorHead = new THREE.Color('#00a4df');      // Bright Ocean Blue for the head
+    const colorTeal = new THREE.Color('#46c3b6');      // Turquoise teal for top torso
+    const colorGreen = new THREE.Color('#a5d796');     // Soft spring green for torso bottom
+    const colorBottom = new THREE.Color('#2ea3b2');    // Deep teal-cyan for crossed leg loops
 
     for (let i = 0; i < particleCount; i++) {
-      // 1. Heart base positions
-      const heartPt = getHeartPoint(i);
-      // Offset heart up slightly to sit nicely as header logo
-      const hX = heartPt.x;
-      const hY = heartPt.y + 7; // Shift logo up
-      const hZ = heartPt.z;
-      
-      heartPositions.push(hX, hY, hZ);
+      let bX = 0, bY = 0, bZ = 0;
+      let pColor = new THREE.Color();
 
-      // 2. Dispersed positions (Spread out everywhere across the viewport in 3D)
-      // We distribute particles in a wide box covering the website sections
-      const dX = (Math.random() - 0.5) * 80;
-      // Spread vertically further down, as user scrolls down the page
-      const dY = (Math.random() - 0.7) * 90;
+      // Spray spread around the bezier lines for volumetric floating stroke effect
+      const sprayRadius = 0.38;
+      const sprayX = (Math.random() - 0.5) * sprayRadius;
+      const sprayY = (Math.random() - 0.5) * sprayRadius;
+      // Slightly thicker depth for 3D parallax
+      const sprayZ = (Math.random() - 0.5) * sprayRadius * 2.2;
+
+      // Split particles into the logo sections
+      if (i < 600) {
+        // 1. HEAD RING (Ocean Blue)
+        const t = (i / 600) * Math.PI * 2;
+        const radius = 2.0;
+        bX = radius * Math.cos(t) + sprayX;
+        bY = radius * Math.sin(t) + 9.5 + yShift + sprayY;
+        bZ = sprayZ;
+        pColor.copy(colorHead);
+      } else if (i < 1400) {
+        // 2. LEFT HEART WING
+        const u = (i - 600) / 800;
+        const pt = leftWingCurve.getPoint(u);
+        bX = pt.x + sprayX;
+        bY = pt.y + sprayY;
+        bZ = sprayZ;
+        // Blends from turquoise top to light green bottom
+        pColor.copy(colorTeal).lerp(colorGreen, u);
+      } else if (i < 2200) {
+        // 3. CENTRAL SWIRL LOOP
+        const u = (i - 1400) / 800;
+        const pt = centerLoopCurve.getPoint(u);
+        bX = pt.x + sprayX;
+        bY = pt.y + sprayY;
+        bZ = sprayZ;
+        // Blends from turquoise to light green
+        pColor.copy(colorTeal).lerp(colorGreen, u);
+      } else if (i < 3200) {
+        // 4. RIGHT HEART WING & TORSO
+        const u = (i - 2200) / 1000;
+        const pt = rightWingCurve.getPoint(u);
+        bX = pt.x + sprayX;
+        bY = pt.y + sprayY;
+        bZ = sprayZ;
+        // Blends all the way down to base
+        pColor.copy(colorTeal).lerp(colorGreen, u);
+      } else if (i < 3850) {
+        // 5. LEFT LOTUS LEG
+        const u = (i - 3200) / 650;
+        const pt = leftLotusCurve.getPoint(u);
+        bX = pt.x + sprayX;
+        bY = pt.y + sprayY;
+        bZ = sprayZ;
+        // Blends from green at center to turquoise at outer loop
+        pColor.copy(colorGreen).lerp(colorBottom, u);
+      } else {
+        // 6. RIGHT LOTUS LEG
+        const u = (i - 3850) / 650;
+        const pt = rightLotusCurve.getPoint(u);
+        bX = pt.x + sprayX;
+        bY = pt.y + sprayY;
+        bZ = sprayZ;
+        // Blends from green at center to turquoise at outer loop
+        pColor.copy(colorGreen).lerp(colorBottom, u);
+      }
+
+      basePositions.push(bX, bY, bZ);
+
+      // Dispersed positions (Spread across screen on scroll)
+      const dX = (Math.random() - 0.5) * 85;
+      const dY = (Math.random() - 0.75) * 95;
       const dZ = (Math.random() - 0.5) * 60;
       dispersedPositions.push(dX, dY, dZ);
 
-      // Set initial positions to heart shape
-      positions[i * 3] = hX;
-      positions[i * 3 + 1] = hY;
-      positions[i * 3 + 2] = hZ;
+      // Set initial positions to logo coordinates
+      positions[i * 3] = bX;
+      positions[i * 3 + 1] = bY;
+      positions[i * 3 + 2] = bZ;
 
-      // 3. Set particle colors based on position
-      const mixRatio = Math.random();
-      const mixedColor = new THREE.Color();
-      if (mixRatio < 0.4) {
-        mixedColor.copy(colorA).lerp(colorB, mixRatio / 0.4);
-      } else {
-        mixedColor.copy(colorB).lerp(colorC, (mixRatio - 0.4) / 0.6);
-      }
-      
-      colors[i * 3] = mixedColor.r;
-      colors[i * 3 + 1] = mixedColor.g;
-      colors[i * 3 + 2] = mixedColor.b;
+      // Assign custom mapped logo color values
+      colors[i * 3] = pColor.r;
+      colors[i * 3 + 1] = pColor.g;
+      colors[i * 3 + 2] = pColor.b;
 
-      // 4. Animation properties
       particleSpeeds.push(0.5 + Math.random() * 1.5);
       randomOffsets.push(Math.random() * 100);
     }
@@ -154,7 +224,7 @@ export default function HeartParticles() {
       transparent: true,
       depthWrite: false,
       blending: THREE.NormalBlending,
-      opacity: 0.85,
+      opacity: 0.88,
       map: createCircleTexture(),
     });
 
@@ -180,36 +250,32 @@ export default function HeartParticles() {
       for (let i = 0; i < particleCount; i++) {
         const i3 = i * 3;
         
-        // Base coordinate (Heart shape)
-        const hX = heartPositions[i3];
-        const hY = heartPositions[i3 + 1];
-        const hZ = heartPositions[i3 + 2];
+        // Base coordinate (Logo shape)
+        const bX = basePositions[i3];
+        const bY = basePositions[i3 + 1];
+        const bZ = basePositions[i3 + 2];
 
         // Dispersed coordinate (Scattered on scroll)
         const dX = dispersedPositions[i3];
         const dY = dispersedPositions[i3 + 1];
         const dZ = dispersedPositions[i3 + 2];
 
-        // Linear interpolation based on smooth scroll ratio
-        // We add some non-linearity (easing) to the dispersion
-        // Easing: start slow, then speed up dispersion
+        // Easing factor to create smooth velocity shifts during dispersion
         const easeRatio = Math.pow(currentScrollRatio, 1.5);
         
-        let targetX = THREE.MathUtils.lerp(hX, dX, easeRatio);
-        let targetY = THREE.MathUtils.lerp(hY, dY, easeRatio);
-        let targetZ = THREE.MathUtils.lerp(hZ, dZ, easeRatio);
+        let targetX = THREE.MathUtils.lerp(bX, dX, easeRatio);
+        let targetY = THREE.MathUtils.lerp(bY, dY, easeRatio);
+        let targetZ = THREE.MathUtils.lerp(bZ, dZ, easeRatio);
 
         // Add subtle floating turbulence / wind wave using Sine/Cosine noise
         const speed = particleSpeeds[i];
         const offset = randomOffsets[i];
         
-        // When in heart shape, reduce turbulence to keep structure neat.
-        // When dispersed, increase turbulent movement to create wind floating effect.
-        const turbulenceFactor = 0.1 + easeRatio * 2.0; 
+        const turbulenceFactor = 0.1 + easeRatio * 2.2; 
         
-        const floatX = Math.sin(elapsedTime * speed + offset) * 0.15 * turbulenceFactor;
-        const floatY = Math.cos(elapsedTime * speed * 0.8 + offset) * 0.15 * turbulenceFactor;
-        const floatZ = Math.sin(elapsedTime * speed * 1.2 + offset) * 0.15 * turbulenceFactor;
+        const floatX = Math.sin(elapsedTime * speed + offset) * 0.14 * turbulenceFactor;
+        const floatY = Math.cos(elapsedTime * speed * 0.8 + offset) * 0.14 * turbulenceFactor;
+        const floatZ = Math.sin(elapsedTime * speed * 1.2 + offset) * 0.14 * turbulenceFactor;
 
         positionsAttr.setXYZ(
           i,
@@ -222,11 +288,10 @@ export default function HeartParticles() {
       positionsAttr.needsUpdate = true;
 
       // 3. Subtle slow rotation of the whole system
-      // Slowly rotate the heart when close to top, or swirl background when dispersed
       if (currentScrollRatio < 0.2) {
         // Slow heart floating tilt
-        particleSystem.rotation.y = Math.sin(elapsedTime * 0.15) * 0.1;
-        particleSystem.rotation.x = Math.cos(elapsedTime * 0.1) * 0.05;
+        particleSystem.rotation.y = Math.sin(elapsedTime * 0.12) * 0.08;
+        particleSystem.rotation.x = Math.cos(elapsedTime * 0.08) * 0.04;
       } else {
         // Drift background points
         particleSystem.rotation.y = elapsedTime * 0.015;
@@ -251,7 +316,7 @@ export default function HeartParticles() {
         material.size = 0.55; // Slightly larger for mobile visibility
         camera.position.z = 45; // Move camera back
       } else {
-        material.size = 0.36;
+        material.size = 0.38;
         camera.position.z = 35;
       }
     };
