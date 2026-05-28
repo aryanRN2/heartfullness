@@ -128,9 +128,9 @@ export default function Home() {
       <section id="about" className="py-24 md:py-32 w-full max-w-7xl px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Glowing Vector Frame for Profile */}
-          <div className="lg:col-span-5 flex justify-center relative">
-            <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-sky-400 p-[3px] shadow-xl relative overflow-hidden group">
+          {/* Glowing Vector Frame for Profile (No text overlaid on the image) */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center relative">
+            <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-sky-400 p-[3px] shadow-xl relative overflow-hidden group mb-6">
               <div className="w-full h-full rounded-[21px] bg-stone-100 relative overflow-hidden">
                 {/* Real Trainer Image */}
                 <img
@@ -138,18 +138,18 @@ export default function Home() {
                   alt="Gopal Ram - Heartfulness Meditation Trainer"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                
-                {/* Elegant Glassmorphic Bottom Caption Plate */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 bg-white/80 backdrop-blur-md border-t border-white/40 flex flex-col items-center text-center shadow-lg">
-                  <h3 className="text-xl md:text-2xl font-extrabold font-outfit text-stone-900 leading-none">Gopal Ram</h3>
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-blue-600 mt-1.5 font-inter">
-                    Certified Heartfulness Guide
-                  </span>
-                  <p className="text-stone-600 text-[10px] md:text-xs mt-2 italic leading-relaxed max-w-[260px]">
-                    "Spreading the divine light of yogic transmission for 20+ years."
-                  </p>
-                </div>
               </div>
+            </div>
+            
+            {/* Biography details placed cleanly below the image instead of overlaying it */}
+            <div className="text-center">
+              <h3 className="text-2xl md:text-3xl font-extrabold font-outfit text-stone-900 leading-none">Gopal Ram</h3>
+              <span className="text-xs uppercase font-bold tracking-widest text-blue-600 mt-2.5 block font-inter">
+                Certified Heartfulness Guide
+              </span>
+              <p className="text-stone-600 text-xs md:text-sm mt-3 italic leading-relaxed max-w-[320px]">
+                "Spreading the divine light of yogic transmission for 20+ years."
+              </p>
             </div>
 
             {/* Float badges around frame */}
