@@ -85,15 +85,15 @@ export default function Home() {
       {/* 1. HERO SECTION */}
       <section className="min-h-screen w-full flex flex-col items-center justify-center relative px-6 text-center pt-24 pb-16">
         {/* Subtle top floating badge */}
-        <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-violet-50/90 border border-violet-200/50 text-violet-750 text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-violet-650" />
+        <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-blue-50/95 border border-blue-200/50 text-blue-800 text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
+          <Sparkles className="w-3.5 h-3.5 text-blue-600" />
           Yogic Transmission Enabled
         </div>
 
         {/* Large spiritual meditation headlines */}
         <h2 className="text-4xl md:text-7xl font-extrabold font-outfit max-w-5xl leading-tight md:leading-tight text-stone-900 mb-6">
           Connect with Your Heart, <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-violet-655 to-amber-600 glow-text-primary">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-cyan-600 to-sky-500 glow-text-primary">
             Experience Deep Silence
           </span>
         </h2>
@@ -124,7 +124,7 @@ export default function Home() {
           className="absolute bottom-8 cursor-pointer text-stone-500 hover:text-stone-800 transition-colors duration-300 animate-bounce flex flex-col items-center"
         >
           <span className="text-[10px] uppercase font-bold tracking-widest mb-1.5">Scroll Down</span>
-          <ArrowRight className="w-5 h-5 transform rotate-90 text-pink-500" />
+          <ArrowRight className="w-5 h-5 transform rotate-90 text-blue-650" />
         </div>
       </section>
 
@@ -134,21 +134,21 @@ export default function Home() {
           
           {/* Glowing Vector Frame for Profile */}
           <div className="lg:col-span-5 flex justify-center relative">
-            <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl bg-gradient-to-tr from-pink-500 via-violet-600 to-amber-500 p-[3px] shadow-xl relative">
+            <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl bg-gradient-to-tr from-blue-600 via-cyan-500 to-sky-400 p-[3px] shadow-xl relative">
               <div className="w-full h-full rounded-[21px] bg-white flex flex-col items-center justify-center p-6 text-center border border-stone-100">
                 
                 {/* SVG glowing graphic placeholder representing spiritual transmission */}
                 <div className="relative w-36 h-36 flex items-center justify-center mb-6">
-                  <div className="absolute inset-0 rounded-full bg-pink-500/5 animate-ping" />
-                  <div className="absolute w-28 h-28 rounded-full border border-violet-500/10 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full border border-dashed border-amber-500/20 flex items-center justify-center animate-spin" style={{ animationDuration: '20s' }}>
-                      <Heart className="w-8 h-8 text-pink-500 fill-current" />
+                  <div className="absolute inset-0 rounded-full bg-blue-500/5 animate-ping" />
+                  <div className="absolute w-28 h-28 rounded-full border border-blue-500/10 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full border border-dashed border-cyan-500/20 flex items-center justify-center animate-spin" style={{ animationDuration: '20s' }}>
+                      <Heart className="w-8 h-8 text-blue-600 fill-current" />
                     </div>
                   </div>
                 </div>
 
                 <h3 className="text-3xl font-extrabold font-outfit text-stone-900 leading-none">Gopal Ram</h3>
-                <span className="text-xs uppercase font-bold tracking-widest text-amber-600 mt-2 font-inter">
+                <span className="text-xs uppercase font-bold tracking-widest text-blue-600 mt-2 font-inter">
                   Certified Heartfulness Guide
                 </span>
                 <p className="text-stone-600 text-xs mt-4 max-w-[240px] italic">
@@ -167,7 +167,7 @@ export default function Home() {
             </div>
 
             <div className="absolute -bottom-4 -left-4 md:-left-8 glass-panel py-2.5 px-4 flex items-center gap-2 border border-black/5 shadow-md">
-              <Calendar className="w-5 h-5 text-pink-500" />
+              <Calendar className="w-5 h-5 text-blue-500" />
               <div className="text-left">
                 <p className="text-[10px] text-stone-500 font-bold uppercase leading-none">Guided Sessions</p>
                 <p className="text-sm font-bold text-stone-900 leading-none mt-0.5">15,000+</p>
@@ -177,7 +177,7 @@ export default function Home() {
 
           {/* Biographical content */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <span className="text-xs text-pink-550 font-bold uppercase tracking-wider mb-2 block">Spiritual Mentorship</span>
+            <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-2 block">Spiritual Mentorship</span>
             <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-6">
               Guiding Seeker’s Hearts Back to the Source
             </h3>
@@ -199,8 +199,8 @@ export default function Home() {
                 { title: 'Individual Mentorship', desc: 'Tailored 1-on-1 spiritual guidelines.' }
               ].map((item) => (
                 <div key={item.title} className="flex gap-3">
-                  <div className="w-6 h-6 rounded-full bg-violet-50 border border-violet-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-pink-500" />
+                  <div className="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-650" />
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-stone-900">{item.title}</h4>
@@ -217,7 +217,7 @@ export default function Home() {
       {/* 3. THE 4 PILLARS OF HEARTFULNESS */}
       <section id="philosophy" className="py-24 md:py-32 w-full max-w-7xl px-6 bg-stone-50/40 border-y border-stone-100">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs text-pink-600 font-bold uppercase tracking-wider mb-2 block">Deep Wisdom</span>
+          <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-2 block">Deep Wisdom</span>
           <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-4">
             The Core Pillars of Heartfulness
           </h3>
@@ -233,25 +233,25 @@ export default function Home() {
               title: 'Meditation',
               num: '01',
               desc: 'Sit comfortably, close your eyes, and gently direct your attention to the source of divine light already present in your heart. Let go of active thoughts.',
-              gradient: 'from-pink-500 to-rose-600'
+              gradient: 'from-blue-650 to-blue-800'
             },
             {
               title: 'Cleaning',
               num: '02',
               desc: 'An active, mental vacuuming process conducted at the end of the day. Intend that all complexities and heavy impressions are leaving your back as smoke.',
-              gradient: 'from-violet-650 to-purple-600'
+              gradient: 'from-cyan-600 to-blue-600'
             },
             {
               title: 'Prayer',
               num: '03',
               desc: 'A gentle nightly reset that aligns the individual ego with the cosmic master. Creating a deep prayerful state creates immense space for transmission.',
-              gradient: 'from-indigo-600 to-blue-600'
+              gradient: 'from-blue-700 to-sky-600'
             },
             {
               title: 'Transmission',
               num: '04',
               desc: 'Known as Pranahuti, this is yogic energy flowing directly into your heart from a trainer, immediately unlocking deeper meditative absorption.',
-              gradient: 'from-amber-500 to-orange-600'
+              gradient: 'from-sky-500 to-cyan-500'
             }
           ].map((pillar) => (
             <div key={pillar.num} className="glass-card p-8 flex flex-col justify-between min-h-[300px]">
@@ -262,7 +262,7 @@ export default function Home() {
                 <h4 className="text-xl font-bold font-outfit text-stone-900 mb-3">{pillar.title}</h4>
                 <p className="text-stone-600 text-sm leading-relaxed">{pillar.desc}</p>
               </div>
-              <div className="mt-6 flex items-center gap-1 text-xs text-pink-600 hover:text-pink-700 font-bold cursor-pointer group">
+              <div className="mt-6 flex items-center gap-1 text-xs text-blue-650 hover:text-blue-800 font-bold cursor-pointer group">
                 Learn Practical Application 
                 <ChevronRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
               </div>
@@ -272,7 +272,7 @@ export default function Home() {
 
         {/* Dynamic Quotes Carousel inside Philosophy */}
         <div className="glass-panel p-8 md:p-12 max-w-4xl mx-auto mt-20 relative overflow-hidden border border-black/5 shadow-md">
-          <div className="absolute top-6 left-6 text-violet-500/5">
+          <div className="absolute top-6 left-6 text-blue-500/5">
             <Quote className="w-24 h-24 stroke-[4]" />
           </div>
 
@@ -285,7 +285,7 @@ export default function Home() {
               <h4 className="text-base font-bold text-stone-900 leading-none">
                 {QUOTES[activeQuote].author}
               </h4>
-              <span className="text-xs text-amber-600 font-bold uppercase tracking-wider mt-1.5">
+              <span className="text-xs text-blue-600 font-bold uppercase tracking-wider mt-1.5">
                 {QUOTES[activeQuote].title}
               </span>
             </div>
@@ -297,7 +297,7 @@ export default function Home() {
                   key={idx}
                   onClick={() => setActiveQuote(idx)}
                   className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    activeQuote === idx ? 'bg-pink-600 w-6' : 'bg-stone-300 hover:bg-stone-400'
+                    activeQuote === idx ? 'bg-blue-600 w-6' : 'bg-stone-300 hover:bg-stone-400'
                   }`}
                   title={`Go to quote ${idx + 1}`}
                 />
@@ -311,7 +311,7 @@ export default function Home() {
       {/* 4. MEDITATION SANCTUARY (THE UTILITIES HUB) */}
       <section id="sanctuary" className="py-24 md:py-32 w-full max-w-7xl px-6 flex flex-col gap-16">
         <div className="text-center max-w-3xl mx-auto">
-          <span className="text-xs text-pink-650 font-bold uppercase tracking-wider mb-2 block">Practice Sanctuary</span>
+          <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-2 block">Practice Sanctuary</span>
           <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-4">
             Harmonize Mind & Body Instantly
           </h3>
@@ -331,13 +331,13 @@ export default function Home() {
       <section id="schedule" className="py-24 md:py-32 w-full max-w-7xl px-6 bg-stone-50/40 rounded-3xl relative overflow-hidden border border-stone-100">
         
         {/* Glow vector overlay */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/5 rounded-full filter blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full filter blur-[120px] pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
           
           {/* Details Column */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <span className="text-xs text-pink-600 font-bold uppercase tracking-wider mb-2 block">Connect Directly</span>
+            <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-2 block">Connect Directly</span>
             <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-6">
               Experience Pranahuti Live with Gopal Ram
             </h3>
@@ -353,7 +353,7 @@ export default function Home() {
                 { icon: Sparkles, title: 'Yogic Cleanse Included', desc: 'Every booking includes a 10-minute active mental impression clearance.' }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-4 items-start">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-stone-200/50 flex items-center justify-center text-pink-550 flex-shrink-0 shadow-sm">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-blue-100/50 flex items-center justify-center text-blue-650 flex-shrink-0 shadow-sm">
                     <item.icon className="w-5 h-5" />
                   </div>
                   <div>
@@ -443,7 +443,7 @@ export default function Home() {
                   <p className="text-stone-700 text-sm leading-relaxed max-w-sm mb-6 font-inter">
                     Namaste **{formData.name}**. Gopal Ram has received your request. We have emailed the meditation guidelines and live Zoom credentials to:
                     <br />
-                    <span className="text-pink-600 font-bold mt-1.5 block">{formData.email}</span>
+                    <span className="text-blue-650 font-bold mt-1.5 block">{formData.email}</span>
                   </p>
                   
                   <button
@@ -468,7 +468,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col items-center">
           
           <div className="flex items-center gap-2.5 mb-6">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-pink-500 to-violet-650 flex items-center justify-center shadow-md">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center shadow-lg">
               <Heart className="w-4 h-4 text-white fill-current" />
             </div>
             <h4 className="text-base font-bold font-outfit text-stone-900 leading-none tracking-wide">

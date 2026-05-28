@@ -6,26 +6,26 @@
   --font-outfit: 'Outfit', sans-serif;
   --font-inter: 'Inter', sans-serif;
   
-  /* Light Theme Color Palette - Morning Alabaster & Sacred Sunrise */
+  /* Blue and White Theme Color Palette - Ice Blue & Ocean Serenity */
   --bg-deep: #ffffff;
-  --bg-darker: #fcfcff;
-  --bg-dark: #f5f4fa;
-  --text-primary: #1b1030;      /* Deep rich slate-violet */
-  --text-secondary: #584c72;    /* Calming grey-purple */
-  --text-muted: #8c82a5;       /* Muted lavender-grey */
+  --bg-darker: #f4f8ff;         /* Very soft serene ice blue */
+  --bg-dark: #ebf3fe;
+  --text-primary: #0f172a;      /* Deep midnight navy/slate */
+  --text-secondary: #334155;    /* Calming steel-blue/grey */
+  --text-muted: #64748b;       /* Muted blue-grey */
   
-  --color-primary: #ff3377;
-  --color-accent: #7c3aed;
-  --color-gold: #d97706;        /* Darker gold for better contrast on white */
+  --color-primary: #2563eb;     /* Serene Royal Blue */
+  --color-accent: #0ea5e9;      /* Sky Blue */
+  --color-gold: #0284c7;        /* Clean Ocean Cyan */
   
-  --gradient-sunrise: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
-  --gradient-spiritual: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
-  --gradient-aurora: linear-gradient(135deg, #ff3377 0%, #7c3aed 50%, #06b6d4 100%);
-  --gradient-gold: linear-gradient(135deg, #fef08a 0%, #fbcfe8 100%);
+  --gradient-sunrise: linear-gradient(135deg, #0ea5e9 0%, #e0f2fe 100%);
+  --gradient-spiritual: linear-gradient(135deg, #1e40af 0%, #06b6d4 100%);
+  --gradient-aurora: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #06b6d4 100%);
+  --gradient-gold: linear-gradient(135deg, #bae6fd 0%, #f0f9ff 100%);
   
-  --glass-bg: rgba(255, 255, 255, 0.72);
-  --glass-border: rgba(0, 0, 0, 0.06);
-  --glass-glow: 0 8px 32px 0 rgba(124, 58, 237, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(37, 99, 235, 0.06);
+  --glass-glow: 0 8px 32px 0 rgba(37, 99, 235, 0.04);
   
   --scroll-behavior: smooth;
 }
@@ -53,20 +53,20 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(124, 58, 237, 0.15);
+  background: rgba(37, 99, 235, 0.12);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(124, 58, 237, 0.3);
+  background: rgba(37, 99, 235, 0.25);
 }
 
-/* Vibrant Animated Background Orbs (Extremely Soft Pastels for Light Theme) */
+/* Serene Background Orbs (Soft Ice Blue & Turquoise) */
 .bg-orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(150px);
   z-index: -2;
-  opacity: 0.22;
+  opacity: 0.28;
   pointer-events: none;
   animation: float 25s ease-in-out infinite alternate;
 }
@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 .orb-primary {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(255, 51, 119, 0.25) 0%, rgba(124, 58, 237, 0) 70%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, rgba(6, 182, 212, 0) 70%);
   top: -100px;
   right: -100px;
 }
@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 .orb-secondary {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.2) 0%, rgba(37, 99, 235, 0) 70%);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(14, 165, 233, 0) 70%);
   bottom: 10%;
   left: -200px;
   animation-duration: 35s;
@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 .orb-tertiary {
   width: 450px;
   height: 450px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(124, 58, 237, 0) 70%);
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(37, 99, 235, 0) 70%);
   top: 40%;
   right: -150px;
   animation-duration: 40s;
@@ -117,24 +117,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-card {
-  background: rgba(0, 0, 0, 0.015);
+  background: rgba(37, 99, 235, 0.008);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 0, 0, 0.035);
+  border: 1px solid rgba(37, 99, 235, 0.025);
   border-radius: 20px;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(124, 58, 237, 0.15);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(37, 99, 235, 0.1);
   transform: translateY(-5px);
-  box-shadow: 0 16px 40px 0 rgba(124, 58, 237, 0.08);
+  box-shadow: 0 16px 40px 0 rgba(37, 99, 235, 0.06);
 }
 
 .glass-input {
-  background: rgba(0, 0, 0, 0.01);
-  border: 1px solid rgba(0, 0, 0, 0.07);
+  background: rgba(37, 99, 235, 0.005);
+  border: 1px solid rgba(37, 99, 235, 0.06);
   border-radius: 12px;
   color: var(--text-primary);
   transition: all 0.3s ease;
@@ -144,18 +144,18 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
   background: rgba(255, 255, 255, 1);
   border-color: var(--color-primary);
-  box-shadow: 0 0 15px rgba(255, 51, 119, 0.12);
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.08);
 }
 
 /* Calming Breathing Visualizer animations */
 @keyframes breathing-inhale {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 20px rgba(124, 58, 237, 0.1);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.08);
   }
   100% {
     transform: scale(1.4);
-    box-shadow: 0 0 50px rgba(124, 58, 237, 0.3);
+    box-shadow: 0 0 50px rgba(37, 99, 235, 0.22);
   }
 }
 
@@ -171,13 +171,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Text glow effects (Soft shadow for white theme) */
+/* Text glow effects (Serene Blue glow) */
 .glow-text-primary {
-  text-shadow: 0 2px 10px rgba(255, 51, 119, 0.2);
+  text-shadow: 0 2px 10px rgba(37, 99, 235, 0.15);
 }
 
 .glow-text-accent {
-  text-shadow: 0 2px 12px rgba(124, 58, 237, 0.25);
+  text-shadow: 0 2px 12px rgba(6, 182, 212, 0.2);
 }
 
 /* Button variants with beautiful hover states */
@@ -191,18 +191,18 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 14px;
   cursor: pointer;
   transition: all 0.4s ease;
-  box-shadow: 0 4px 15px rgba(255, 51, 119, 0.2);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.15);
 }
 
 .btn-primary:hover {
   background-position: right center;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 51, 119, 0.35);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.28);
 }
 
 .btn-secondary {
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(37, 99, 235, 0.02);
+  border: 1px solid rgba(37, 99, 235, 0.05);
   color: var(--text-primary);
   font-weight: 600;
   border-radius: 14px;
@@ -211,8 +211,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: rgba(0, 0, 0, 0.12);
+  background: rgba(37, 99, 235, 0.05);
+  border-color: rgba(37, 99, 235, 0.1);
   transform: translateY(-2px);
 }
 

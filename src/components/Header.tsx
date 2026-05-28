@@ -40,7 +40,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'py-4 bg-white/75 border-b border-black/5 backdrop-blur-md shadow-lg shadow-stone-100/30'
+          ? 'py-4 bg-white/75 border-b border-black/5 backdrop-blur-md shadow-lg shadow-blue-50/20'
           : 'py-6 bg-transparent'
       }`}
     >
@@ -52,14 +52,14 @@ export default function Header() {
           className="flex items-center gap-2.5 cursor-pointer group"
         >
           {/* We style an elegant glowing heart circle to act as the standard logo */}
-          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 to-violet-650 flex items-center justify-center shadow-lg group-hover:scale-105 transition-all duration-300">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center shadow-lg group-hover:scale-105 transition-all duration-300">
             <Heart className="w-5 h-5 text-white fill-current" />
           </div>
           <div>
-            <h1 className="text-lg font-bold font-outfit text-stone-900 leading-none tracking-wide group-hover:text-pink-600 transition-colors duration-300">
+            <h1 className="text-lg font-bold font-outfit text-stone-900 leading-none tracking-wide group-hover:text-blue-600 transition-colors duration-300">
               HEARTFULNESS
             </h1>
-            <span className="text-[10px] uppercase font-bold text-violet-600 tracking-widest leading-none">
+            <span className="text-[10px] uppercase font-bold text-blue-600 tracking-widest leading-none">
               Gopal Ram Meditation
             </span>
           </div>
@@ -76,7 +76,7 @@ export default function Header() {
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="text-stone-600 hover:text-stone-900 font-medium text-sm font-outfit transition-colors duration-300 cursor-pointer relative py-1.5 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-gradient-to-r after:from-pink-500 after:to-violet-500 after:scale-x-0 hover:after:scale-x-100 after:origin-right hover:after:origin-left after:transition-transform after:duration-300"
+              className="text-stone-600 hover:text-stone-900 font-medium text-sm font-outfit transition-colors duration-300 cursor-pointer relative py-1.5 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-gradient-to-r after:from-blue-600 after:to-cyan-400 after:scale-x-0 hover:after:scale-x-100 after:origin-right hover:after:origin-left after:transition-transform after:duration-300"
             >
               {item.label}
             </button>
@@ -87,7 +87,7 @@ export default function Header() {
         <div className="hidden md:block">
           <button
             onClick={() => scrollToSection('schedule')}
-            className="px-5 py-2.5 bg-gradient-to-r from-pink-500 to-violet-600 rounded-xl text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-pink-500/10 hover:shadow-pink-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-1.5"
+            className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-550 rounded-xl text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-blue-500/10 hover:shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-1.5"
           >
             <Sparkles className="w-3.5 h-3.5" />
             Book Free Session
@@ -124,7 +124,7 @@ export default function Header() {
             
             <button
               onClick={() => scrollToSection('schedule')}
-              className="mt-4 w-full py-4 bg-gradient-to-r from-pink-500 to-violet-600 rounded-xl text-sm font-bold uppercase tracking-wider text-white shadow-lg text-center"
+              className="mt-4 w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-550 rounded-xl text-sm font-bold uppercase tracking-wider text-white shadow-lg text-center"
             >
               Book Free Session
             </button>

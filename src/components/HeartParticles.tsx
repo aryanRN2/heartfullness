@@ -77,10 +77,10 @@ export default function HeartParticles() {
       };
     };
 
-    // Color gradients (Spiritual Pink/Indigo/Orange)
-    const colorA = new THREE.Color('#ff0844'); // Bright Pink/Red
-    const colorB = new THREE.Color('#8b5cf6'); // Mystical Purple
-    const colorC = new THREE.Color('#ffbe3b'); // Warm Gold
+    // Color gradients (Spiritual Blue, Sky Blue, and Ice Silver)
+    const colorA = new THREE.Color('#1e40af'); // Serene Deep Blue
+    const colorB = new THREE.Color('#0ea5e9'); // Clear Sky Blue
+    const colorC = new THREE.Color('#93c5fd'); // Glowing Ice Silver
 
     for (let i = 0; i < particleCount; i++) {
       // 1. Heart base positions

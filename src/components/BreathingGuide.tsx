@@ -110,42 +110,42 @@ export default function BreathingGuide() {
     if (!isPlaying) setTotalCycles(0);
   };
 
-  // Determine circle scale and color based on breathing phase (Adjusted for white theme)
+  // Determine circle scale and color based on breathing phase (Adjusted for Blue theme)
   const getCircleStyle = () => {
-    if (!isPlaying) return { transform: 'scale(1)', color: 'var(--color-primary)', borderColor: 'rgba(0, 0, 0, 0.12)' };
+    if (!isPlaying) return { transform: 'scale(1)', color: 'var(--color-primary)', borderColor: 'rgba(37, 99, 235, 0.12)' };
     
     switch (phase) {
       case 'Inhale':
         const inhalePercent = 1 + ((activePattern.inhale - timeLeft) / activePattern.inhale) * 0.45;
         return {
           transform: `scale(${inhalePercent})`,
-          background: 'radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(255, 51, 119, 0.05) 70%)',
+          background: 'radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(6, 182, 212, 0.05) 70%)',
           borderColor: 'var(--color-primary)',
-          boxShadow: '0 0 30px rgba(255, 51, 119, 0.22)',
+          boxShadow: '0 0 30px rgba(37, 99, 235, 0.18)',
           color: 'var(--text-primary)'
         };
       case 'Hold':
         return {
           transform: 'scale(1.45)',
-          background: 'radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, rgba(124, 58, 237, 0.05) 70%)',
-          borderColor: 'var(--color-gold)',
-          boxShadow: '0 0 35px rgba(217, 119, 6, 0.25)',
+          background: 'radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, rgba(37, 99, 235, 0.05) 70%)',
+          borderColor: 'var(--color-accent)',
+          boxShadow: '0 0 35px rgba(14, 165, 233, 0.22)',
           color: 'var(--text-primary)'
         };
       case 'Exhale':
         const exhalePercent = 1.45 - ((activePattern.exhale - timeLeft) / activePattern.exhale) * 0.45;
         return {
           transform: `scale(${exhalePercent})`,
-          background: 'radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, rgba(124, 58, 237, 0.03) 70%)',
+          background: 'radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, rgba(37, 99, 235, 0.03) 70%)',
           borderColor: 'rgba(6, 182, 212, 0.7)',
-          boxShadow: '0 0 25px rgba(6, 182, 212, 0.2)',
+          boxShadow: '0 0 25px rgba(6, 182, 212, 0.18)',
           color: 'var(--text-primary)'
         };
       case 'Rest':
         return {
           transform: 'scale(1)',
-          background: 'radial-gradient(circle, rgba(124, 58, 237, 0.05) 0%, rgba(0, 0, 0, 0) 70%)',
-          borderColor: 'rgba(0, 0, 0, 0.1)',
+          background: 'radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(0, 0, 0, 0) 70%)',
+          borderColor: 'rgba(37, 99, 235, 0.08)',
           boxShadow: 'none',
           color: 'var(--text-primary)'
         };
@@ -153,7 +153,7 @@ export default function BreathingGuide() {
   };
 
   return (
-    <div className="glass-panel p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center max-w-4xl mx-auto w-full border border-black/5 shadow-md">
+    <div className="glass-panel p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center max-w-4xl mx-auto w-full border border-blue-100/30 shadow-md">
       {/* Visual Circle Area */}
       <div className="relative w-64 h-64 flex items-center justify-center flex-shrink-0">
         {/* Dynamic Glowing Circle */}
@@ -161,7 +161,7 @@ export default function BreathingGuide() {
           style={getCircleStyle()}
           className="absolute w-44 h-44 rounded-full border-2 border-dashed flex flex-col items-center justify-center transition-all duration-1000 ease-out bg-white"
         >
-          <span className="text-xl font-bold tracking-wider font-outfit uppercase mt-2 text-stone-600">
+          <span className="text-xl font-bold tracking-wider font-outfit uppercase mt-2 text-stone-505">
             {isPlaying ? phase : 'Ready'}
           </span>
           <span className="text-5xl font-extrabold font-outfit mt-1 text-stone-900 glow-text-primary">
@@ -170,15 +170,15 @@ export default function BreathingGuide() {
         </div>
 
         {/* Outer Ring boundary */}
-        <div className="absolute w-64 h-64 rounded-full border border-stone-200/50 pointer-events-none" />
-        <div className="absolute w-48 h-48 rounded-full border border-stone-200/30 pointer-events-none" />
+        <div className="absolute w-64 h-64 rounded-full border border-blue-100/40 pointer-events-none" />
+        <div className="absolute w-48 h-48 rounded-full border border-blue-100/20 pointer-events-none" />
       </div>
 
       {/* Control Area */}
       <div className="flex-grow flex flex-col justify-between w-full">
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <Wind className="w-6 h-6 text-violet-600" />
+            <Wind className="w-6 h-6 text-blue-600" />
             <h3 className="text-2xl font-bold font-outfit text-stone-900">Breathing Sanctuary</h3>
           </div>
           <p className="text-stone-600 text-sm md:text-base leading-relaxed mb-6 font-inter">
@@ -194,7 +194,7 @@ export default function BreathingGuide() {
                 onClick={() => setPatternIndex(idx)}
                 className={`py-2 px-3 rounded-lg text-xs font-semibold font-outfit transition-all duration-300 cursor-pointer ${
                   patternIndex === idx
-                    ? 'bg-violet-600/10 border border-violet-500/40 text-violet-700'
+                    ? 'bg-blue-600/10 border border-blue-500/40 text-blue-700'
                     : 'bg-stone-50 border border-stone-200/60 text-stone-600 hover:bg-stone-100 hover:text-stone-900 disabled:opacity-50'
                 }`}
               >
@@ -205,9 +205,9 @@ export default function BreathingGuide() {
 
           <div className="bg-stone-50/70 border border-stone-200/60 rounded-xl p-4 mb-6">
             <div className="flex justify-between items-center mb-1">
-              <span className="text-xs text-violet-650 font-bold uppercase tracking-wider">Pattern Description</span>
+              <span className="text-xs text-blue-700 font-bold uppercase tracking-wider">Pattern Description</span>
               {isPlaying && (
-                <span className="text-xs text-violet-650 font-bold bg-violet-50 px-2 py-0.5 rounded-full">
+                <span className="text-xs text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-full">
                   Cycles Completed: {totalCycles}
                 </span>
               )}
@@ -223,7 +223,7 @@ export default function BreathingGuide() {
           onClick={handleStartStop}
           className={`w-full py-4 rounded-xl flex items-center justify-center gap-2 font-bold font-outfit uppercase tracking-wider transition-all duration-300 cursor-pointer ${
             isPlaying
-              ? 'bg-rose-50 border border-rose-200 text-rose-600 hover:bg-rose-100/70'
+              ? 'bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100/70'
               : 'btn-primary'
           }`}
         >
