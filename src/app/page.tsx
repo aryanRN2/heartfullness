@@ -191,7 +191,7 @@ export default function Home() {
             What is Heartfulness?
           </h3>
           <p className="text-stone-600 max-w-2xl mx-auto leading-relaxed">
-            Heartfulness is defined as a simple, heart-centered approach to living that connects us with our inner self. It is a modern, practical application of Sahaj Marg (the Natural Path)—a form of Raja Yoga designed to fit seamlessly into daily life.
+            Heartfulness is a simple, heart-centered approach to living that connects us with our inner self. It is a modern, practical application of Sahaj Marg (the Natural Path)—a form of Raja Yoga designed to fit seamlessly into daily life.
           </p>
         </div>
 
