@@ -14,7 +14,10 @@ import {
   Send,
   CheckCircle2,
   Clock,
-  MapPin
+  MapPin,
+  Flower2,
+  Wind,
+  Play
 } from 'lucide-react';
 
 
@@ -22,8 +25,8 @@ import {
 const QUOTES = [
   {
     text: "The heart is the master of our system. When we purify the heart, the entire being becomes harmonious and aligned with the divine light.",
-    author: "Gopal",
-    title: "Heartfulness Trainer"
+    author: "",
+    title: ""
   },
   {
     text: "Yogic transmission (Pranahuti) is the unique catalyst in Heartfulness. It is not just instruction, but an active flow of spiritual energy directly to the seeker's heart.",
@@ -32,7 +35,7 @@ const QUOTES = [
   },
   {
     text: "Cleaning is the daily practice of releasing mental impressions (samskaras). By removing yesterday's heavy baggage, we greet today with complete lightness.",
-    author: "Gopal",
+    author: "",
     title: "Daily Practice Guide"
   }
 ];
@@ -47,6 +50,9 @@ export default function Home() {
   // Dynamic Gallery Images State
   const [galleryImages, setGalleryImages] = useState<any[]>([]);
   const [isLoadingGallery, setIsLoadingGallery] = useState(true);
+  
+  // Hovered Gallery Item State
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -112,12 +118,6 @@ export default function Home() {
           >
             Explore Gallery
           </button>
-          <button
-            onClick={() => scrollToSection('about')}
-            className="btn-secondary py-4 px-8 text-sm uppercase tracking-wider font-bold"
-          >
-            Meet Trainer
-          </button>
         </div>
 
         {/* Simple floating down indicator */}
@@ -150,11 +150,8 @@ export default function Home() {
             {/* Biography details placed cleanly below the image instead of overlaying it */}
             <div className="text-center">
               <h3 className="text-2xl md:text-3xl font-extrabold font-outfit text-stone-900 leading-none">Gopal</h3>
-              <span className="text-xs uppercase font-bold tracking-widest text-blue-655 mt-2.5 block font-inter">
-                Heartfulness Trainer
-              </span>
               <p className="text-stone-600 text-xs md:text-sm mt-3 italic leading-relaxed max-w-[320px]">
-                "Spreading the divine light of yogic transmission for 20+ years."
+                "Spreading the divine light of yogic transmission for 18+ years."
               </p>
             </div>
 
@@ -171,25 +168,7 @@ export default function Home() {
               I have served in Judicial Department as Personal Assistant to Additional District Judge Sonbhadra. During service period, I continued spiritual service among the people of my locality. I am leading a purposeful, joyful, and balanced life with my family for last 18 years.
             </p>
 
-            {/* Grid checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                { title: 'Yogic Transmission', desc: 'Direct activation of heart consciousness.' },
-                { title: 'Samskara Cleaning', desc: 'Shedding deep-rooted impressions.' },
-                { title: 'Daily Breathing Pacing', desc: 'Establishing deep autonomic rest.' },
-                { title: 'Individual Mentorship', desc: 'Tailored 1-on-1 spiritual guidelines.' }
-              ].map((item) => (
-                <div key={item.title} className="flex gap-3">
-                  <div className="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-655" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-stone-900">{item.title}</h4>
-                    <p className="text-xs text-stone-600 mt-0.5">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+
           </div>
 
         </div>
@@ -198,55 +177,74 @@ export default function Home() {
       {/* 3. THE 4 PILLARS OF HEARTFULNESS */}
       <section id="philosophy" className="py-24 md:py-32 w-full max-w-7xl px-6 bg-stone-50/40 border-y border-stone-100">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-2 block">Deep Wisdom</span>
+          <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-1.5 block">Meaning of Meditation (Dhyan)</span>
+          <div className="text-[11px] md:text-xs font-extrabold tracking-widest uppercase mb-4 select-none flex flex-wrap items-center justify-center gap-1.5">
+            <span className="text-blue-655">DHEE</span>
+            <span className="text-stone-400 font-normal">+</span>
+            <span className="text-blue-655">YAAN</span>
+            <span className="text-stone-400 font-normal">=</span>
+            <span className="text-stone-800">ULTIMATE WISDOM</span>
+            <span className="text-stone-400 font-normal">+</span>
+            <span className="text-stone-800">VEHICLE</span>
+          </div>
           <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-4">
-            The Core Pillars of Heartfulness
+            What is Heartfulness?
           </h3>
-          <p className="text-stone-600">
-            A comprehensive, scientific approach to spiritual awakening. Discover how these 4 interconnected pillars transform your daily conscious experience.
+          <p className="text-stone-600 max-w-2xl mx-auto leading-relaxed">
+            Heartfulness is defined as a simple, heart-centered approach to living that connects us with our inner self. It is a modern, practical application of Sahaj Marg (the Natural Path)—a form of Raja Yoga designed to fit seamlessly into daily life.
           </p>
+        </div>
+
+        {/* Intro to the Practices */}
+        <div className="text-center max-w-3xl mx-auto mt-20 mb-10">
+          <h4 className="text-2xl md:text-3xl font-bold font-outfit text-stone-900">
+            A Set of Heartfulness Practices
+          </h4>
         </div>
 
         {/* 4 Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
-              title: 'Meditation',
+              title: 'Relaxation',
               num: '01',
-              desc: 'Sit comfortably, close your eyes, and gently direct your attention to the source of divine light already present in your heart. Let go of active thoughts.',
-              gradient: 'from-blue-650 to-blue-800'
+              desc: 'A physical practice to quiet the body so the mind can settle down.',
+              gradient: 'from-blue-650 to-blue-800',
+              icon: Wind
             },
             {
-              title: 'Cleaning',
+              title: 'Meditation',
               num: '02',
-              desc: 'An active, mental vacuuming process conducted at the end of the day. Intend that all complexities and heavy impressions are leaving your back as smoke.',
-              gradient: 'from-cyan-600 to-blue-600'
+              desc: "Sitting in silence with the gentle, soft suggestion that a Divine Light is present within the heart. You don't try to force concentration; you simply observe your feelings and let yourself sink inward.",
+              gradient: 'from-cyan-600 to-blue-600',
+              icon: Flower2
             },
             {
-              title: 'Prayer',
+              title: 'Cleaning (The Mental Detox)',
               num: '03',
-              desc: 'A gentle nightly reset that aligns the individual ego with the cosmic master. Creating a deep prayerful state creates immense space for transmission.',
-              gradient: 'from-blue-700 to-sky-600'
+              desc: "Practiced in the evening, this is a unique element where you use your willpower to actively sweep away the day's accumulated stress, complexities, emotional heaviness, and impressions. It restores a state of inner purity.",
+              gradient: 'from-blue-700 to-sky-600',
+              icon: Sparkles
             },
             {
-              title: 'Transmission',
+              title: 'Prayer (Inner Connection)',
               num: '04',
-              desc: 'Known as Pranahuti, this is yogic energy flowing directly into your heart from a trainer, immediately unlocking deeper meditative absorption.',
-              gradient: 'from-sky-500 to-cyan-500'
+              desc: 'A brief, reflective practice done before sleep and upon waking to connect deeply with your inner essence and maintain that peaceful state throughout the day.',
+              gradient: 'from-sky-500 to-cyan-500',
+              icon: Heart
             }
           ].map((pillar) => (
-            <div key={pillar.num} className="glass-card p-8 flex flex-col justify-between min-h-[300px]">
-              <div>
-                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${pillar.gradient} flex items-center justify-center text-white font-extrabold font-outfit text-lg shadow-md mb-6`}>
-                  {pillar.num}
+            <div key={pillar.num} className="glass-card p-8 flex flex-col justify-start min-h-[280px]">
+              <div className="flex justify-between items-center mb-6">
+                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-tr ${pillar.gradient} flex items-center justify-center text-white shadow-md`}>
+                  <pillar.icon className="w-6 h-6" />
                 </div>
-                <h4 className="text-xl font-bold font-outfit text-stone-900 mb-3">{pillar.title}</h4>
-                <p className="text-stone-600 text-sm leading-relaxed">{pillar.desc}</p>
+                <span className="text-stone-300 font-extrabold font-outfit text-xl">
+                  {pillar.num}
+                </span>
               </div>
-              <div className="mt-6 flex items-center gap-1 text-xs text-blue-650 hover:text-blue-800 font-bold cursor-pointer group">
-                Learn Practical Application 
-                <ChevronRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
-              </div>
+              <h4 className="text-xl font-bold font-outfit text-stone-900 mb-3">{pillar.title}</h4>
+              <p className="text-stone-600 text-sm leading-relaxed">{pillar.desc}</p>
             </div>
           ))}
         </div>
@@ -280,12 +278,16 @@ export default function Home() {
               <p className="text-stone-800 text-lg md:text-xl italic leading-relaxed max-w-2xl mb-6">
                 "{QUOTES[activeQuote].text}"
               </p>
-              <h4 className="text-base font-bold text-stone-900 leading-none">
-                {QUOTES[activeQuote].author}
-              </h4>
-              <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mt-1.5">
-                {QUOTES[activeQuote].title}
-              </span>
+              {QUOTES[activeQuote].author && (
+                <h4 className="text-base font-bold text-stone-900 leading-none">
+                  {QUOTES[activeQuote].author}
+                </h4>
+              )}
+              {QUOTES[activeQuote].title && (
+                <span className={`text-xs text-blue-655 font-bold uppercase tracking-wider ${QUOTES[activeQuote].author ? 'mt-1.5' : ''}`}>
+                  {QUOTES[activeQuote].title}
+                </span>
+              )}
             </div>
 
             {/* Slider Dots and Control Buttons */}
@@ -332,14 +334,14 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs text-blue-655 font-bold uppercase tracking-wider mb-2 block">World of Stillness</span>
             <h3 className="text-3xl md:text-5xl font-bold font-outfit text-stone-900 mb-4">
-              Meditation Gallery
+              Heartfulness Gallery
             </h3>
             <p className="text-stone-600 font-inter leading-relaxed max-w-2xl mx-auto">
               A glimpse into the quiet sanctuary. Explore moments of deep absorption, collective harmony, and inner stillness. Click on any image to open the interactive lightbox.
             </p>
           </div>
 
-          {/* Grid layout */}
+          {/* Masonry free-form layout */}
           {isLoadingGallery ? (
             <div className="flex items-center justify-center py-16 text-stone-500 font-inter">
               <span className="animate-pulse">Loading gallery sanctuary...</span>
@@ -349,23 +351,61 @@ export default function Home() {
               <span>Gallery is currently empty. Add photos to the gallary folder.</span>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+            <div
+              className="w-full max-w-6xl"
+              style={{
+                columns: 'var(--gallery-cols, 3)',
+                columnGap: '1.25rem',
+              }}
+            >
+              <style>{`
+                @media (max-width: 640px)  { :root { --gallery-cols: 1; } }
+                @media (min-width: 641px) and (max-width: 1023px) { :root { --gallery-cols: 2; } }
+                @media (min-width: 1024px) { :root { --gallery-cols: 3; } }
+              `}</style>
               {galleryImages.map((img, idx) => (
-                <div 
+                <div
                   key={idx}
                   onClick={() => setLightboxIndex(idx)}
-                  className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl border border-black/5 bg-white aspect-square transition-all duration-500 transform hover:-translate-y-1"
+                  onMouseEnter={() => setHoveredIndex(idx)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  className="group relative rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-xl border border-black/5 bg-white mb-5 break-inside-avoid transition-all duration-500 transform hover:-translate-y-1"
                 >
-                  {/* Image */}
-                  <img
-                    src={img.src}
-                    alt={img.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-
-                  {/* Subtle overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                    <h4 className="text-white text-lg font-bold font-outfit leading-none">{img.title}</h4>
+                  {img.type === 'video' ? (
+                    <div className="relative w-full overflow-hidden">
+                      {hoveredIndex === idx ? (
+                        <video
+                          src={img.src}
+                          muted
+                          loop
+                          playsInline
+                          autoPlay
+                          className="w-full h-auto block transition-transform duration-700 scale-105"
+                        />
+                      ) : (
+                        <video
+                          src={img.src}
+                          muted
+                          playsInline
+                          preload="metadata"
+                          className="w-full h-auto block transition-transform duration-700"
+                        />
+                      )}
+                      {/* Styled video play icon badge */}
+                      <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white shadow-md z-10 border border-white/10 group-hover:bg-blue-600 transition-colors duration-300">
+                        <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src={img.src}
+                      alt={img.title}
+                      className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+                    />
+                  )}
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-5">
+                    <h4 className="text-white text-base font-bold font-outfit leading-none">{img.title}</h4>
                     <p className="text-stone-300 text-xs mt-1.5 font-inter leading-relaxed line-clamp-2">
                       {img.desc}
                     </p>
@@ -398,7 +438,7 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-stone-500 text-xs mb-8 font-medium">
             <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('about')}>Instructor bio</span>
             <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('philosophy')}>Pillars</span>
-            <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('gallery')}>Meditation Gallery</span>
+            <span className="hover:text-stone-950 cursor-pointer transition-colors" onClick={() => scrollToSection('gallery')}>Heartfulness Gallery</span>
           </div>
 
           <div className="text-stone-500 text-[10px] md:text-xs font-inter">
@@ -430,11 +470,20 @@ export default function Home() {
 
           {/* Image Container with text below */}
           <div className="max-w-4xl max-h-[85vh] flex flex-col items-center gap-6 relative select-none">
-            <img
-              src={galleryImages[lightboxIndex]?.src}
-              alt={galleryImages[lightboxIndex]?.title}
-              className="max-h-[70vh] rounded-2xl object-contain shadow-2xl border border-white/10"
-            />
+            {galleryImages[lightboxIndex]?.type === 'video' ? (
+              <video
+                src={galleryImages[lightboxIndex]?.src}
+                controls
+                autoPlay
+                className="max-h-[70vh] rounded-2xl object-contain shadow-2xl border border-white/10"
+              />
+            ) : (
+              <img
+                src={galleryImages[lightboxIndex]?.src}
+                alt={galleryImages[lightboxIndex]?.title}
+                className="max-h-[70vh] rounded-2xl object-contain shadow-2xl border border-white/10"
+              />
+            )}
             
             <div className="text-center text-white max-w-xl px-4">
               <h4 className="text-xl md:text-2xl font-bold font-outfit">{galleryImages[lightboxIndex]?.title}</h4>

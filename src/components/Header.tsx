@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Heart, Sparkles } from 'lucide-react';
+import { Menu, X, Sparkles } from 'lucide-react';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,15 +51,17 @@ export default function Header() {
           onClick={() => scrollToSection('hero')} 
           className="flex items-center gap-2.5 cursor-pointer group"
         >
-          {/* We style an elegant glowing heart circle to act as the standard logo */}
-          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center shadow-lg group-hover:scale-105 transition-all duration-300">
-            <Heart className="w-5 h-5 text-white fill-current" />
-          </div>
+          {/* Golden Heart Logo */}
+          <img
+            src="/golden_logo.png"
+            alt="Heartfulness Logo"
+            className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-sm"
+          />
           <div>
-            <h1 className="text-lg font-bold font-outfit text-stone-900 leading-none tracking-wide group-hover:text-blue-600 transition-colors duration-300">
+            <h1 className="text-lg font-bold font-outfit text-stone-900 leading-none tracking-wide group-hover:text-amber-600 transition-colors duration-300">
               HEARTFULNESS
             </h1>
-            <span className="text-[10px] uppercase font-bold text-blue-600 tracking-widest leading-none">
+            <span className="text-[10px] uppercase font-bold text-amber-600 tracking-widest leading-none">
               Gopal Meditation Trainer
             </span>
           </div>
@@ -109,7 +111,7 @@ export default function Header() {
             {[
               { id: 'about', label: 'Meet Gopal' },
               { id: 'philosophy', label: 'The Philosophy' },
-              { id: 'gallery', label: 'Meditation Gallery' },
+              { id: 'gallery', label: 'Heartfulness Gallery' },
             ].map((item) => (
               <button
                 key={item.id}

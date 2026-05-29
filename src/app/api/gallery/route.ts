@@ -4,7 +4,7 @@ import path from 'path';
 
 export async function GET() {
   try {
-    const galleryDir = path.join(process.cwd(), 'gallary');
+    const galleryDir = path.join(process.cwd(), 'public', 'gallary');
     
     // Ensure directory exists
     if (!fs.existsSync(galleryDir)) {
@@ -13,27 +13,32 @@ export async function GET() {
 
     const files = fs.readdirSync(galleryDir);
     
-    // Filter for image extensions
-    const allowedExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'];
-    const imageFiles = files.filter(file => {
+    // Filter for image and video extensions
+    const allowedExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.mp4', '.webm', '.mov'];
+    const mediaFiles = files.filter(file => {
       const ext = path.extname(file).toLowerCase();
       return allowedExtensions.includes(ext);
     });
 
     // Sort files alphabetically to keep order consistent
-    imageFiles.sort();
+    mediaFiles.sort();
 
     // Map to API-served source paths and clean titles
-    const images = imageFiles.map((file, idx) => {
-      const nameWithoutExt = path.basename(file, path.extname(file));
+    const images = mediaFiles.map((file, idx) => {
+      const ext = path.extname(file).toLowerCase();
+      const isVideo = ['.mp4', '.webm', '.mov'].includes(ext);
+      const nameWithoutExt = path.basename(file, ext);
       const title = nameWithoutExt
         .replace(/[-_]+/g, ' ')
         .replace(/\b\w/g, c => c.toUpperCase());
 
       return {
-        src: `/api/gallery/image?file=${encodeURIComponent(file)}`,
-        title: title || `Meditation Image ${idx + 1}`,
-        desc: 'A quiet moment of deep meditation, collective harmony, and inner stillness.'
+        src: `/gallary/${encodeURIComponent(file)}`,
+        title: title || `${isVideo ? 'Meditation Video' : 'Meditation Image'} ${idx + 1}`,
+        desc: isVideo
+          ? 'An immersive spiritual video showcasing moments of stillness and deep yogic transmission.'
+          : 'A quiet moment of deep meditation, collective harmony, and inner stillness.',
+        type: isVideo ? 'video' : 'image'
       };
     });
 
