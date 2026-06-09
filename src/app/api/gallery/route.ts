@@ -20,6 +20,7 @@ const CUSTOM_DESCRIPTIONS: Record<string, string> = {
   '29_Meditation_For_World_Peace.png': 'Cultivating inner harmony to contribute to world peace and unity.',
   '30_Inner_Detox_Cleaning_Practice.png': 'An evening cleaning practice to sweep away the day\'s accumulated complexities.',
   '31_Sahaj_Marg_Spiritual_Path.png': 'Walking the natural path of Sahaj Marg for balanced spiritual progress.',
+  '32_Heartfulness_Session_At_Pawar_Robertsganj.jpg': 'A collective Heartfulness meditation session held at the Gram Panchayat Secretariat in Pawar, Robertsganj, Sonbhadra.',
   
   // Existing videos/images
   '01_Meditation_Video.mp4': 'An introduction to Heartfulness meditation, opening the gateway to inner peace.',
