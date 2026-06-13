@@ -21,6 +21,7 @@ const CUSTOM_DESCRIPTIONS: Record<string, string> = {
   '30_Inner_Detox_Cleaning_Practice.png': 'An evening cleaning practice to sweep away the day\'s accumulated complexities.',
   '31_Sahaj_Marg_Spiritual_Path.png': 'Walking the natural path of Sahaj Marg for balanced spiritual progress.',
   '32_Heartfulness_Session_At_Pawar_Robertsganj.jpg': 'A collective Heartfulness meditation session held at the Gram Panchayat Secretariat in Pawar, Robertsganj, Sonbhadra.',
+  '33_Heartfulness_Session_With_UP_Police_Group.jpg': 'UP Police officers and coordinators gathered after a Heartfulness stress management and meditation session.',
   
   // Existing videos/images
   '01_Meditation_Video.mp4': 'An introduction to Heartfulness meditation, opening the gateway to inner peace.',
