@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import * as THREE from 'three';
 
 export default function HeartParticles() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -245,6 +247,7 @@ export default function HeartParticles() {
       );
 
       const positionsAttr = geometry.attributes.position as THREE.BufferAttribute;
+      const array = positionsAttr.array as Float32Array;
       
       // 2. Animate and interpolate each particle
       for (let i = 0; i < particleCount; i++) {
@@ -277,12 +280,9 @@ export default function HeartParticles() {
         const floatY = Math.cos(elapsedTime * speed * 0.8 + offset) * 0.14 * turbulenceFactor;
         const floatZ = Math.sin(elapsedTime * speed * 1.2 + offset) * 0.14 * turbulenceFactor;
 
-        positionsAttr.setXYZ(
-          i,
-          targetX + floatX,
-          targetY + floatY,
-          targetZ + floatZ
-        );
+        array[i3] = targetX + floatX;
+        array[i3 + 1] = targetY + floatY;
+        array[i3 + 2] = targetZ + floatZ;
       }
 
       positionsAttr.needsUpdate = true;
@@ -335,7 +335,9 @@ export default function HeartParticles() {
       material.dispose();
       renderer.dispose();
     };
-  }, []);
+  }, [pathname]);
+
+  if (pathname !== '/') return null;
 
   return (
     <div 

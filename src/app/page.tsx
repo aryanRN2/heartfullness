@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { 
   Heart, 
   Sparkles, 
@@ -96,7 +97,7 @@ export default function Home() {
     <div className="w-full flex flex-col items-center select-none" id="hero">
       
       {/* 1. HERO SECTION */}
-      <section className="min-h-screen w-full flex flex-col items-center justify-center relative px-6 text-center pt-24 pb-16">
+      <section className="min-h-screen w-full flex flex-col items-center justify-center relative px-4 sm:px-6 text-center pt-24 pb-16">
         
         {/* Large spiritual meditation headlines */}
         <h2 className="text-4xl md:text-7xl font-extrabold font-outfit max-w-5xl leading-tight md:leading-tight text-stone-900 mb-6">
@@ -111,13 +112,19 @@ export default function Home() {
         </p>
 
         {/* Actions bar */}
-        <div className="flex flex-col sm:flex-row gap-4 w-full justify-center max-w-md">
+        <div className="flex flex-col sm:flex-row gap-4 w-full justify-center max-w-lg">
           <button
             onClick={() => scrollToSection('gallery')}
             className="btn-primary py-4 px-8 text-sm uppercase tracking-wider font-bold"
           >
             Explore Gallery
           </button>
+          <Link
+            href="/brighterminds"
+            className="btn-pink py-4 px-8 text-sm uppercase tracking-wider font-bold text-center flex items-center justify-center"
+          >
+            Brighter Minds
+          </Link>
         </div>
 
         {/* Simple floating down indicator */}
@@ -131,7 +138,7 @@ export default function Home() {
       </section>
 
       {/* 2. ABOUT GOPAL (BIOGRAPHY) */}
-      <section id="about" className="py-24 md:py-32 w-full max-w-7xl px-6">
+      <section id="about" className="py-16 md:py-32 w-full max-w-7xl px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Glowing Vector Frame for Profile (No text overlaid on the image) */}
@@ -175,7 +182,7 @@ export default function Home() {
       </section>
 
       {/* 3. THE 4 PILLARS OF HEARTFULNESS */}
-      <section id="philosophy" className="py-24 md:py-32 w-full max-w-7xl px-6 bg-stone-50/40 border-y border-stone-100">
+      <section id="philosophy" className="py-16 md:py-32 w-full max-w-7xl px-4 sm:px-6 bg-stone-50/40 border-y border-stone-100">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs text-blue-650 font-bold uppercase tracking-wider mb-1.5 block">Meaning of Meditation (Dhyan)</span>
           <div className="text-[11px] md:text-xs font-extrabold tracking-widest uppercase mb-4 select-none flex flex-wrap items-center justify-center gap-1.5">
@@ -325,7 +332,7 @@ export default function Home() {
         </div>
 
       </section>      {/* 5. MEDITATION GALLERY SECTION */}
-      <section id="gallery" className="py-24 md:py-32 w-full max-w-7xl px-6 bg-stone-50/40 rounded-3xl relative overflow-hidden border border-stone-100">
+      <section id="gallery" className="py-16 md:py-32 w-full max-w-7xl px-4 sm:px-6 bg-stone-50/40 rounded-3xl relative overflow-hidden border border-stone-100">
         
         {/* Glow vector overlay */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full filter blur-[120px] pointer-events-none" />
@@ -351,18 +358,7 @@ export default function Home() {
               <span>Gallery is currently empty. Add photos to the gallary folder.</span>
             </div>
           ) : (
-            <div
-              className="w-full max-w-6xl"
-              style={{
-                columns: 'var(--gallery-cols, 3)',
-                columnGap: '1.25rem',
-              }}
-            >
-              <style>{`
-                @media (max-width: 640px)  { :root { --gallery-cols: 1; } }
-                @media (min-width: 641px) and (max-width: 1023px) { :root { --gallery-cols: 2; } }
-                @media (min-width: 1024px) { :root { --gallery-cols: 3; } }
-              `}</style>
+            <div className="w-full max-w-6xl columns-1 sm:columns-2 lg:columns-3 gap-5">
               {galleryImages.map((img, idx) => (
                 <div
                   key={idx}
@@ -418,7 +414,7 @@ export default function Home() {
       </section>
 
       {/* 6. FOOTER */}
-      <footer className="w-full border-t border-stone-200/50 bg-stone-100/80 py-12 md:py-16 px-6 text-center mt-24">
+      <footer className="w-full border-t border-stone-200/50 bg-stone-100/80 py-10 md:py-16 px-4 sm:px-6 text-center mt-16 sm:mt-24">
         <div className="max-w-7xl mx-auto flex flex-col items-center">
           
           <div className="flex items-center gap-2.5 mb-6">

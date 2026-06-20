@@ -22,6 +22,7 @@
   --gradient-spiritual: linear-gradient(135deg, #1e40af 0%, #06b6d4 100%);
   --gradient-aurora: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #06b6d4 100%);
   --gradient-gold: linear-gradient(135deg, #bae6fd 0%, #f0f9ff 100%);
+  --gradient-pink: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #d946ef 100%);
   
   --glass-bg: rgba(255, 255, 255, 0.75);
   --glass-border: rgba(37, 99, 235, 0.06);
@@ -213,6 +214,28 @@ h1, h2, h3, h4, h5, h6 {
   background-position: right center;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(37, 99, 235, 0.28);
+}
+
+.btn-pink {
+  position: relative;
+  background: var(--gradient-pink);
+  background-size: 200% auto;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-pink:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.28);
 }
 
 .btn-secondary {

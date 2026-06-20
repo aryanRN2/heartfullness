@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Sparkles } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -85,7 +86,7 @@ export default function Header() {
         </nav>
 
         {/* Desktop Gallery CTA */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => scrollToSection('gallery')}
             className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-550 rounded-xl text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-blue-500/10 hover:shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-1.5"
@@ -93,6 +94,12 @@ export default function Header() {
             <Sparkles className="w-3.5 h-3.5" />
             Explore Gallery
           </button>
+          <Link
+            href="/brighterminds"
+            className="px-5 py-2.5 bg-gradient-to-r from-rose-500 to-pink-500 rounded-xl text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-rose-500/10 hover:shadow-rose-500/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-1.5"
+          >
+            Brighter Minds
+          </Link>
         </div>
 
         {/* Mobile Menu Trigger */}
@@ -128,6 +135,13 @@ export default function Header() {
             >
               Explore Gallery
             </button>
+            <Link
+              href="/brighterminds"
+              className="w-full py-4 bg-gradient-to-r from-rose-500 to-pink-500 rounded-xl text-sm font-bold uppercase tracking-wider text-white shadow-lg text-center flex items-center justify-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Brighter Minds
+            </Link>
           </div>
         </div>
       )}
