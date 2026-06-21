@@ -25,6 +25,7 @@ const CUSTOM_DESCRIPTIONS: Record<string, string> = {
   '46_Heartfulness_In_Village_Churk.png': 'A collective Heartfulness meditation and wellness session held for the residents of Churk village.',
   '47_Heartfulness_In_Village_Sahijan.png': 'Spreading the practice of heart-centered meditation among seekers in Sahijan village.',
   '48_Heartfulness_Trainer_Gopal_At_Shahjahanpur.png': 'Heartfulness Trainer Gopal at the Shri Ram Chandra Mission center in Shahjahanpur.',
+  '49_Yoga_And_Heartfulness_Meditation_At_Kotwali_Police_Station.mp4': 'Police officers and constables performing Yoga and Heartfulness meditation at the Kotwali Police Station, Sonbhadra, on the occasion of International Yoga Day (June 21, 2026, between 6:00 AM and 7:00 AM) under the chairmanship of the Station House Officer (SHO). Heartfulness Volunteers: Dr. Vaibhav, retired Circle Officer Mr. S.K. Verma, Mr. Ranjan, and Principal Mr. Devendra. Heartfulness Team and Dr. Achala. Heartfulness Trainer/District Coordinator.',
   
   // Existing videos/images
   '01_Meditation_Video.mp4': 'An introduction to Heartfulness meditation, opening the gateway to inner peace.',
