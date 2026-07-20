@@ -29,6 +29,8 @@ const CUSTOM_DESCRIPTIONS: Record<string, string> = {
   '50_Heartfulness_Meditation_Session_1.jpeg': 'Seekers gathered for a peaceful collective Heartfulness meditation session, fostering inner peace and spiritual connection.',
   '51_Heartfulness_Meditation_Session_2.jpeg': 'Volunteers and seekers sharing moments of joy, stillness, and unity during a Heartfulness meditation program.',
   '52_Heartfulness_Meditation_Session_Video.mp4': 'A glimpse into a serene Heartfulness session, illustrating quiet meditation and the flowing energy of yogic transmission.',
+  '53_Heartfulness_Session_At_Kotwali_Police_Station_1.png': 'A police officer and staff members participating in a Heartfulness meditation session for stress relief and mental clarity.',
+  '54_Heartfulness_Session_At_Kotwali_Police_Station_2.png': 'A compilation of images showing police officers practicing yoga, pranayama, and heart-centered meditation at Kotwali Police Station.',
   
   // Existing videos/images
   '01_Meditation_Video.mp4': 'An introduction to Heartfulness meditation, opening the gateway to inner peace.',
